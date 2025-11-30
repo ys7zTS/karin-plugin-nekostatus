@@ -22,7 +22,6 @@ export const status = karin.command(regex, async (ctx) => {
     mem: await getMemoryInfo(),
     disk: await getStorageInfo()
   }
-  logger.info(status)
   const img = await render('status/index', { status })
   ctx.reply(img)
 })
