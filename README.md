@@ -1,4 +1,4 @@
-![status](https://socialify.git.ci/@ys7zTS/karin-plugin-nekostatus/image?font=Inter&forks=1&issues=1&language=1&name=1&owner=1&pattern=Plus&pulls=1&stargazers=1&theme=Auto)
+![status](https://socialify.git.ci/ys7zTS/karin-plugin-nekostatus/image?font=Inter&forks=1&issues=1&language=1&name=1&owner=1&pattern=Plus&pulls=1&stargazers=1&theme=Auto)
 
 <div align="center">
 
@@ -6,7 +6,7 @@
 
 [![GitHub](https://img.shields.io/badge/GitHub-猫猫状态插件-black?style=flat-square&logo=github)](https://github.com/ys7zTS/karin-plugin-nekostatus) [![Karin](https://img.shields.io/badge/Karin-black?style=flat-square&logo=dependabot)](https://github.com/KarinJS/Karin)
 
-![动态访问量](https://count.kjchmc.cn/get/@ys7zTS/karin-plugin-nekostatus?theme=rule34)
+![动态访问量](https://count.kjchmc.cn/get/ys7zTS/karin-plugin-nekostatus?theme=rule34)
 
 </div>
 
@@ -59,22 +59,6 @@ pnpm add @ys7zts/karin-plugin-nekostatus -w
     "neko"
   ]
 }
-```
-
-
-自定义内容配置
-
-你可以在配置中添加自定义监控项：
-
-```javascript
-customContents: [
-  {
-    name: "我的自定义项",
-    command: "your-command-here",
-    icon: "🎨",
-    unit: "单位"
-  }
-]
 ```
 使用 📖
 
