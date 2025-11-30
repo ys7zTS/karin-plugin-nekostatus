@@ -1,0 +1,5 @@
+node_modules/
+@karinjs/
+.env
+development.env
+pnpm-workspace.yaml

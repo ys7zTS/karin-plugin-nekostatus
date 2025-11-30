@@ -1,0 +1,822 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-primary: #f0f7ff;
+  --bg-secondary: #fdf2f8;
+  --bg-card: rgba(255, 255, 255, 0.8);
+  --accent-blue: #60a5fa;
+  --accent-pink: #f9a8d4;
+  --accent-cyan: #67e8f9;
+
+  /* 颜色系统 */
+  --slate-400: #94a3b8;
+  --slate-500: #64748b;
+  --slate-600: #475569;
+  --slate-700: #334155;
+
+  --sky-50: #f0f9ff;
+  --sky-100: #e0f2fe;
+  --sky-200: #bae6fd;
+  --sky-300: #7dd3fc;
+  --sky-400: #38bdf8;
+  --sky-500: #0ea5e9;
+  --sky-600: #0284c7;
+
+  --pink-50: #fdf2f8;
+  --pink-100: #fce7f3;
+  --pink-200: #fbcfe8;
+  --pink-300: #f9a8d4;
+  --pink-400: #f472b6;
+  --pink-500: #ec4899;
+  --pink-600: #db2777;
+
+  --cyan-50: #ecfeff;
+  --cyan-100: #cffafe;
+  --cyan-200: #a5f3fc;
+  --cyan-300: #67e8f9;
+  --cyan-400: #22d3ee;
+  --cyan-500: #06b6d4;
+  --cyan-600: #0891b2;
+
+  --amber-50: #fffbeb;
+  --amber-100: #fef3c7;
+  --amber-200: #fde68a;
+  --amber-300: #fcd34d;
+  --amber-400: #fbbf24;
+  --amber-500: #f59e0b;
+  --amber-600: #d97706;
+
+  --purple-50: #faf5ff;
+  --purple-100: #f3e8ff;
+  --purple-500: #a855f7;
+
+  --rose-100: #ffe4e6;
+  --rose-400: #fb7185;
+  --rose-500: #f43f5e;
+
+  --indigo-100: #e0e7ff;
+  --indigo-600: #4f46e5;
+
+  --green-100: #dcfce7;
+  --green-400: #4ade80;
+  --green-500: #07C160;
+
+  --white: #ffffff;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e0f2fe 0%, #fce7f3 50%, #cffafe 100%);
+  color: var(--slate-700);
+  padding: 1.5rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.5;
+}
+
+/* ========== 布局 ========== */
+.container {
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.md-grid-1 {
+  grid-template-columns: 1fr;
+}
+
+.md-grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.gap-1 {
+  gap: 0.25rem;
+}
+
+.gap-2 {
+  gap: 0.5rem;
+}
+
+.gap-3 {
+  gap: 0.75rem;
+}
+
+.gap-4 {
+  gap: 1rem;
+}
+
+.gap-6 {
+  gap: 1.5rem;
+}
+
+/* ========== 卡片样式 ========== */
+.card {
+  backdrop-filter: blur(10px);
+  background: var(--bg-card);
+  box-shadow: 0 4px 20px rgba(147, 197, 253, 0.15);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 8px 30px rgba(147, 197, 253, 0.25);
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--slate-700);
+}
+
+.card-icon {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-icon svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* ========== 边框颜色 ========== */
+.border-sky {
+  border: 1px solid var(--sky-200);
+}
+
+.border-pink {
+  border: 1px solid var(--pink-200);
+}
+
+.border-cyan {
+  border: 1px solid var(--cyan-200);
+}
+
+.border-amber {
+  border: 1px solid var(--amber-200);
+}
+
+/* ========== 头部 ========== */
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.header h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--sky-400), var(--pink-400), var(--cyan-400));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.header p {
+  color: var(--slate-500);
+  margin-top: 0.5rem;
+}
+
+/* ========== Bot 卡片 ========== */
+.bot-card {
+  background: linear-gradient(135deg, rgba(224, 242, 254, 0.9) 0%, rgba(252, 231, 243, 0.9) 100%);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  border: 1px solid var(--sky-100);
+}
+
+.bot-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.bot-avatar {
+  position: relative;
+}
+
+.bot-avatar img {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  border: 2px solid var(--sky-300);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.bot-avatar .status {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  width: 1.25rem;
+  height: 1.25rem;
+  background: var(--green-400);
+  border-radius: 50%;
+  border: 2px solid var(--white);
+}
+
+.bot-info h3 {
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--slate-700);
+}
+
+.bot-version {
+  font-size: 0.75rem;
+  color: var(--slate-500);
+  background: var(--sky-50);
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  display: inline-block;
+  margin-top: 0.25rem;
+}
+
+.bot-badge {
+  margin-left: auto;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.bot-badge svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.badge-telegram {
+  background: var(--sky-100);
+  color: var(--sky-600);
+}
+
+.badge-discord {
+  background: var(--indigo-100);
+  color: var(--indigo-600);
+}
+
+.badge-qq {
+  background: var(--sky-100);
+  color: var(--sky-600);
+}
+
+.badge-wechat {
+  background: var(--green-100);
+  color: var(--green-500);
+}
+
+.badge-other {
+  background: var(--amber-100);
+  color: var(--amber-600);
+}
+
+.bot-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+}
+
+.bot-stat {
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  text-align: center;
+}
+
+.bot-stat-value {
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.bot-stat-label {
+  font-size: 0.75rem;
+  color: var(--slate-500);
+}
+
+.text-sky {
+  color: var(--sky-500);
+}
+
+.text-pink {
+  color: var(--pink-500);
+}
+
+.text-cyan {
+  color: var(--cyan-500);
+}
+
+.text-purple {
+  color: var(--purple-500);
+}
+
+.text-amber {
+  color: var(--amber-500);
+}
+
+.text-rose {
+  color: var(--rose-500);
+}
+
+/* ========== 插件卡片 ========== */
+.plugin-item {
+  border-radius: 0.75rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.plugin-count {
+  font-size: 1.875rem;
+  font-weight: 700;
+}
+
+.plugin-label {
+  font-size: 0.875rem;
+  color: var(--slate-600);
+}
+
+.bg-sky-gradient {
+  background: linear-gradient(135deg, var(--sky-50), var(--sky-100));
+  border: 1px solid var(--sky-200);
+}
+
+.bg-pink-gradient {
+  background: linear-gradient(135deg, var(--pink-50), var(--pink-100));
+  border: 1px solid var(--pink-200);
+}
+
+.bg-cyan-gradient {
+  background: linear-gradient(135deg, var(--cyan-50), var(--cyan-100));
+  border: 1px solid var(--cyan-200);
+}
+
+.bg-amber-gradient {
+  background: linear-gradient(135deg, var(--amber-50), var(--amber-100));
+  border: 1px solid var(--amber-200);
+}
+
+/* ========== CPU 区域 ========== */
+.cpu-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+.cpu-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--sky-100);
+}
+
+.cpu-info-row:last-child {
+  border-bottom: none;
+}
+
+.cpu-info-label {
+  color: var(--slate-500);
+}
+
+.cpu-info-value {
+  font-weight: 500;
+  color: var(--slate-700);
+}
+
+.cpu-chart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cpu-circle {
+  position: relative;
+  width: 12rem;
+  height: 12rem;
+}
+
+.cpu-circle svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(90deg) scaleX(-1);
+}
+
+.cpu-circle-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cpu-percent {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--slate-700);
+}
+
+.cpu-label {
+  font-size: 0.875rem;
+  color: var(--slate-500);
+}
+
+.core-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.core-item {
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.core-value {
+  font-weight: 600;
+}
+
+.core-label {
+  font-size: 0.75rem;
+  color: var(--slate-500);
+}
+
+/* ========== 内存区域 ========== */
+.memory-card {
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+}
+
+.memory-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.memory-title {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--slate-700);
+}
+
+.memory-percent {
+  font-weight: 600;
+}
+
+.progress-container {
+  height: 1rem;
+  background: var(--white);
+  border-radius: 9999px;
+  overflow: hidden;
+  margin-bottom: 0.75rem;
+}
+
+.progress-bar {
+  height: 100%;
+  border-radius: 9999px;
+  transition: width 0.5s ease-in-out;
+}
+
+.progress-pink {
+  background: linear-gradient(90deg, var(--pink-400), var(--sky-400));
+}
+
+.progress-cyan {
+  background: linear-gradient(90deg, var(--cyan-400), var(--pink-400));
+}
+
+.memory-footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  color: var(--slate-500);
+}
+
+.memory-stats {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.memory-stat {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.memory-stat-label {
+  font-size: 0.75rem;
+  color: var(--slate-500);
+}
+
+.memory-stat-value {
+  font-weight: 600;
+}
+
+/* ========== 存储区域 ========== */
+.disk-card {
+  border-radius: 0.75rem;
+  padding: 1rem;
+}
+
+.disk-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.disk-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.disk-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-weight: 700;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.disk-name {
+  font-weight: 500;
+  color: var(--slate-700);
+}
+
+.disk-fs {
+  font-size: 0.875rem;
+  color: var(--slate-500);
+}
+
+.disk-usage {
+  text-align: right;
+}
+
+.disk-percent {
+  font-weight: 600;
+}
+
+.disk-size {
+  font-size: 0.875rem;
+  color: var(--slate-500);
+}
+
+.disk-progress {
+  height: 0.75rem;
+  background: var(--white);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.progress-rose {
+  background: linear-gradient(90deg, var(--rose-400), var(--pink-400));
+}
+
+.progress-sky {
+  background: linear-gradient(90deg, var(--cyan-400), var(--sky-400));
+}
+
+.progress-purple {
+  background: linear-gradient(90deg, var(--pink-400), var(--purple-500));
+}
+
+.progress-amber {
+  background: linear-gradient(90deg, var(--amber-400), #fb923c);
+}
+
+/* ========== 网络区域 ========== */
+.network-card {
+  border-radius: 0.75rem;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.network-icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.network-icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--white);
+}
+
+.network-label {
+  font-size: 0.875rem;
+  color: var(--slate-500);
+}
+
+.network-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.network-speed {
+  font-size: 0.75rem;
+  color: var(--slate-400);
+}
+
+/* ========== 服务器信息区域 ========== */
+.server-info-item {
+  border-radius: 0.75rem;
+  padding: 1rem;
+}
+
+.server-info-label {
+  font-size: 0.875rem;
+  color: var(--slate-500);
+}
+
+.server-info-value {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--slate-700);
+}
+
+/* ========== 页脚 ========== */
+.footer {
+  text-align: center;
+  margin-top: 2rem;
+  color: var(--slate-400);
+  font-size: 0.875rem;
+}
+
+/* ========== 渐变背景类 ========== */
+.bg-gradient-sky-pink {
+  background: linear-gradient(135deg, var(--sky-50), var(--pink-50));
+  border: 1px solid var(--sky-100);
+}
+
+.bg-gradient-cyan-sky {
+  background: linear-gradient(135deg, var(--cyan-50), var(--sky-50));
+  border: 1px solid var(--cyan-100);
+}
+
+.bg-gradient-pink-purple {
+  background: linear-gradient(135deg, var(--pink-50), var(--purple-50));
+  border: 1px solid var(--pink-100);
+}
+
+.bg-gradient-amber-orange {
+  background: linear-gradient(135deg, var(--amber-50), #fff7ed);
+  border: 1px solid var(--amber-100);
+}
+
+.bg-gradient-pink-rose {
+  background: linear-gradient(135deg, var(--pink-50), #fff1f2);
+  border: 1px solid var(--pink-100);
+}
+
+.bg-gradient-purple-pink {
+  background: linear-gradient(135deg, var(--purple-50), var(--pink-50));
+  border: 1px solid var(--purple-100);
+}
+
+.bg-gradient-sky-indigo {
+  background: linear-gradient(135deg, var(--sky-50), #eef2ff);
+  border: 1px solid var(--sky-100);
+}
+
+.bg-gradient-cyan-teal {
+  background: linear-gradient(135deg, var(--cyan-50), #f0fdfa);
+  border: 1px solid var(--cyan-100);
+}
+
+/* 图标背景 */
+.icon-sky-pink {
+  background: linear-gradient(135deg, var(--sky-100), var(--pink-100));
+}
+
+.icon-pink-cyan {
+  background: linear-gradient(135deg, var(--pink-100), var(--cyan-100));
+}
+
+.icon-cyan-sky {
+  background: linear-gradient(135deg, var(--cyan-100), var(--sky-100));
+}
+
+.icon-pink-purple {
+  background: linear-gradient(135deg, var(--pink-100), var(--purple-100));
+}
+
+.icon-sky {
+  background: linear-gradient(135deg, var(--sky-200), var(--sky-300));
+}
+
+.icon-cyan {
+  background: linear-gradient(135deg, var(--cyan-200), var(--cyan-300));
+}
+
+.icon-pink {
+  background: linear-gradient(135deg, var(--pink-200), var(--pink-300));
+}
+
+.icon-amber {
+  background: linear-gradient(135deg, var(--amber-200), var(--amber-300));
+}
+
+/* Bot card border variants */
+.bot-card.border-pink-light {
+  border-color: var(--pink-100);
+}
+
+.bot-card.border-cyan-light {
+  border-color: var(--cyan-100);
+}
+
+.bot-card.border-amber-light {
+  border-color: var(--amber-100);
+}
+
+.bot-avatar.border-pink img {
+  border-color: var(--pink-300);
+}
+
+.bot-avatar.border-cyan img {
+  border-color: var(--cyan-300);
+}
+
+.bot-avatar.border-amber img {
+  border-color: var(--amber-300);
+}
+
+.bot-version.bg-pink {
+  background: var(--pink-50);
+}
+
+.bot-version.bg-cyan {
+  background: var(--cyan-50);
+}
+
+.bot-version.bg-amber {
+  background: var(--amber-50);
+}
