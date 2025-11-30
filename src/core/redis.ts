@@ -26,9 +26,11 @@ const init = () => {
   hooks.message(async (event, next) => {
     try {
       const d1 = await redis.get(`nekostatus:receive:${event.bot.selfId}`)
-      let d2: { count: number, time: number } = d1 ? JSON.parse(d1) : { count: 0, time: Date.now() }
-      if (Date.now() - d2.time > 30 * 24 * 60 * 60 * 1000) {
-        d2 = { count: 0, time: Date.now() }
+      const now = new Date()
+      const time = now.getFullYear() * 100 + now.getMonth() + 1
+      let d2: { count: number, time: number } = d1 ? JSON.parse(d1) : { count: 0, time }
+      if (d2.time !== time) {
+        d2 = { count: 0, time }
       }
       d2.count += 1
       redis.set(`nekostatus:receive:${event.bot.selfId}`, JSON.stringify(d2))
