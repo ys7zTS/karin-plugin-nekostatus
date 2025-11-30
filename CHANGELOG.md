@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/v1.0.2...v1.0.3) (2025-11-30)
+
+
+### Bug Fixes
+
+* 优化接收消息统计逻辑 ([38b34ce](https://github.com/ys7zTS/karin-plugin-nekostatus/commit/38b34ce6731eb2e401dea5f5c780d4e544ba9527))
+
 ## [1.0.2](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/v1.0.1...v1.0.2) (2025-11-30)
 
 
