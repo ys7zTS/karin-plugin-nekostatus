@@ -1,4 +1,4 @@
-import { getBotInfo, getCPUInfo, getMemoryInfo } from '@/modules'
+import { getBotInfo, getCPUInfo, getMemoryInfo, getStorageInfo } from '@/modules'
 import { Cfg, render } from '@/utils'
 import karin, { getPlugins, logger } from 'node-karin'
 
@@ -19,7 +19,8 @@ export const status = karin.command(regex, async (ctx) => {
       js: (await getPlugins('app', false)).length
     },
     cpu: await getCPUInfo(),
-    mem: await getMemoryInfo()
+    mem: await getMemoryInfo(),
+    disk: await getStorageInfo()
   }
   logger.info(status)
   const img = await render('status/index', { status })

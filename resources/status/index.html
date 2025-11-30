@@ -299,82 +299,26 @@
       存储空间
     </h2>
     <div class="grid md-grid-2 gap-4">
-      <!-- 磁盘 C -->
+      {{each status.disk}}
       <div class="disk-card bg-gradient-sky-pink">
         <div class="disk-header">
           <div class="disk-info">
-            <div class="disk-icon icon-sky">C:</div>
+            <div class="disk-icon icon-sky">{{$value.Id}}</div>
             <div>
-              <p class="disk-name">系统盘</p>
-              <p class="disk-fs">NTFS</p>
+              <p class="disk-name">{{$value.mount}}</p>
+              <p class="disk-fs">{{$value.type}}</p>
             </div>
           </div>
           <div class="disk-usage">
-            <p class="disk-percent text-rose">87.3%</p>
-            <p class="disk-size">218.25 / 250 GB</p>
+            <p class="disk-percent text-rose">{{$value.use}}%</p>
+            <p class="disk-size">{{$value.used}} / {{$value.size}} GB</p>
           </div>
         </div>
         <div class="disk-progress" style="border: 1px solid var(--rose-100)">
-          <div class="progress-bar progress-rose" style="width: 87.3%"></div>
+          <div class="progress-bar progress-rose" style="width: {{$value.use}}%"></div>
         </div>
       </div>
-      <!-- 磁盘 D -->
-      <div class="disk-card bg-gradient-cyan-sky">
-        <div class="disk-header">
-          <div class="disk-info">
-            <div class="disk-icon icon-cyan">D:</div>
-            <div>
-              <p class="disk-name">数据盘</p>
-              <p class="disk-fs">NTFS</p>
-            </div>
-          </div>
-          <div class="disk-usage">
-            <p class="disk-percent text-cyan">45.2%</p>
-            <p class="disk-size">452 / 1000 GB</p>
-          </div>
-        </div>
-        <div class="disk-progress" style="border: 1px solid var(--cyan-100)">
-          <div class="progress-bar progress-sky" style="width: 45.2%"></div>
-        </div>
-      </div>
-      <!-- 磁盘 E -->
-      <div class="disk-card bg-gradient-pink-purple">
-        <div class="disk-header">
-          <div class="disk-info">
-            <div class="disk-icon icon-pink">E:</div>
-            <div>
-              <p class="disk-name">备份盘</p>
-              <p class="disk-fs">NTFS</p>
-            </div>
-          </div>
-          <div class="disk-usage">
-            <p class="disk-percent text-pink">23.8%</p>
-            <p class="disk-size">476 / 2000 GB</p>
-          </div>
-        </div>
-        <div class="disk-progress" style="border: 1px solid var(--pink-100)">
-          <div class="progress-bar progress-purple" style="width: 23.8%"></div>
-        </div>
-      </div>
-      <!-- 磁盘 / (Linux) -->
-      <div class="disk-card bg-gradient-amber-orange">
-        <div class="disk-header">
-          <div class="disk-info">
-            <div class="disk-icon icon-amber">/sys/firmware/efi/efivars</div>
-            <div>
-              <p class="disk-name">根目录</p>
-              <p class="disk-fs">ext4</p>
-            </div>
-          </div>
-          <div class="disk-usage">
-            <p class="disk-percent text-amber">68.5%</p>
-            <p class="disk-size">342.5 / 500 GB</p>
-          </div>
-        </div>
-        <div class="disk-progress" style="border: 1px solid var(--amber-100)">
-          <div class="progress-bar progress-amber" style="width: 68.5%"></div>
-        </div>
-      </div>
+      {{/each}}
     </div>
   </div>
 
