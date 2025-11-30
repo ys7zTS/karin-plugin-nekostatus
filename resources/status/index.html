@@ -37,7 +37,7 @@
             </div>
             <div class="bot-info">
               <h3>{{$value.bot.nickname}}</h3>
-              <span class="bot-version">ver: {{$value.adapter.name}} v{{$value.adapter.version}}</span>
+              <span class="bot-version">{{$value.adapter.name}} v{{$value.adapter.version}}</span>
             </div>
             {{if $value.adapter.platform === 'telegram'}}
             <span class="bot-badge badge-telegram">
