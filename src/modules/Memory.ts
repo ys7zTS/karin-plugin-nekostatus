@@ -4,8 +4,8 @@ import si from 'systeminformation'
 export async function getMemoryInfo () {
   const mem = await si.mem()
   const total = mem.total
-  const free = mem.free
-  const used = mem.total - mem.free
+  const free = mem.available
+  const used = total - free
   return {
     /** 物理内存信息 */
     mem: {
