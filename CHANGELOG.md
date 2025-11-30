@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/v1.0.1...v1.0.2) (2025-11-30)
+
+
+### Bug Fixes
+
+* 修改内存计算逻辑 ([a892110](https://github.com/ys7zTS/karin-plugin-nekostatus/commit/a89211089e47d1b3342debc98f7c25a5017c9857))
+
 ## [1.0.1](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/v1.0.0...v1.0.1) (2025-11-30)
 
 
