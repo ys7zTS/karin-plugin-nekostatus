@@ -1,6 +1,6 @@
 {
   "name": "@ys7zts/karin-plugin-nekostatus",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "瑜笙",
   "type": "module",
   "description": "基于Karin编写的服务器状态",
