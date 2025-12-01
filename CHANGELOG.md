@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.1](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/v1.1.0...v1.1.1) (2025-12-01)
+
+
+### Bug Fixes
+
+* 临时解决Bot不显示发送消息次数的问题 ([bf52a17](https://github.com/ys7zTS/karin-plugin-nekostatus/commit/bf52a17c71b83a58df269ba7971f4f53435699ec))
+* 更新页脚 ([6f6f7ab](https://github.com/ys7zTS/karin-plugin-nekostatus/commit/6f6f7ab7c9038d1af86d932794f2b89c514e117f))
+
 ## [1.1.0](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/v1.0.3...v1.1.0) (2025-12-01)
 
 
