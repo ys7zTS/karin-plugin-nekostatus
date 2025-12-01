@@ -1,6 +1,6 @@
-import { getBotInfo, getCPUInfo, getMemoryInfo, getStorageInfo } from '@/modules'
+import { getBotInfo, getCPUInfo, getMemoryInfo, getStorageInfo, getSystemInfo } from '@/modules'
 import { Cfg, render } from '@/utils'
-import karin, { getPlugins, logger } from 'node-karin'
+import karin, { config, getPlugins, uptime } from 'node-karin'
 
 const escapeRegex = (str: string) => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 const reg = Cfg.config.prefix.map(escapeRegex).join('|')
@@ -20,7 +20,14 @@ export const status = karin.command(regex, async (ctx) => {
     },
     cpu: await getCPUInfo(),
     mem: await getMemoryInfo(),
-    disk: await getStorageInfo()
+    disk: await getStorageInfo(),
+    k: {
+      name: config.pkg().name,
+      version: config.pkg().version,
+      time: uptime(),
+      bots: karin.getBotCount()
+    },
+    sys: await getSystemInfo()
   }
   const img = await render('status/index', { status })
   ctx.reply(img)

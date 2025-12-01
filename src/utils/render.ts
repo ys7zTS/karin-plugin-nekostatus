@@ -16,7 +16,7 @@ export const render = async (
   const root = path.join(dir.pluginPath, 'resources')
   const img = await karin.render({
     name: path.basename(name),
-    type: 'jpeg',
+    type: 'png',
     file: path.join(root, `${name}.html`),
     data: {
       pluResPath: `${root}/`,
@@ -25,10 +25,12 @@ export const render = async (
       },
       ...params,
     },
-    screensEval: '#container',
     pageGotoParams: {
-      waitUntil: 'networkidle2',
+      waitUntil: 'networkidle0',
     },
+    setViewport: {
+      deviceScaleFactor: 3
+    }
   })
   return segment.image(`${img.includes('base64://') ? img : `base64://${img}`}`)
 }

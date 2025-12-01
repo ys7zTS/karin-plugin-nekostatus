@@ -47,3 +47,22 @@ export const format = (bytes: number, options: { minMB?: number, minGB?: number,
     return KB >= 1 ? `${KB.toFixed(decimals)} KB` : `${bytes} B`
   }
 }
+
+/**
+ * 时间转换
+ * @param time 时间戳
+ * @returns
+ */
+export const formatUptime = (time: number) => {
+  const days = Math.floor(time / (3600 * 24))
+  const hours = Math.floor((time % (3600 * 24)) / 3600)
+  const minutes = Math.floor((time % 3600) / 60)
+
+  const parts = []
+  if (days > 0) parts.push(`${days}天`)
+  if (hours > 0) parts.push(`${hours}小时`)
+  if (minutes > 0) parts.push(`${minutes}分钟`)
+  if (parts.length === 0) parts.push('不足1分钟')
+
+  return parts.join('')
+}

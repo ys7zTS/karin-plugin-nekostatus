@@ -7,19 +7,14 @@
 }
 
 :root {
-  --bg-primary: #f0f7ff;
-  --bg-secondary: #fdf2f8;
-  --bg-card: rgba(255, 255, 255, 0.8);
-  --accent-blue: #60a5fa;
-  --accent-pink: #f9a8d4;
-  --accent-cyan: #67e8f9;
-
-  /* 颜色系统 */
+  --bg-card: rgba(255, 255, 255, 0.85);
+  --bg-card-inner: rgba(255, 255, 255, 0.6);
+  --slate-50: #f8fafc;
+  --slate-100: #f1f5f9;
   --slate-400: #94a3b8;
   --slate-500: #64748b;
   --slate-600: #475569;
   --slate-700: #334155;
-
   --sky-50: #f0f9ff;
   --sky-100: #e0f2fe;
   --sky-200: #bae6fd;
@@ -27,15 +22,12 @@
   --sky-400: #38bdf8;
   --sky-500: #0ea5e9;
   --sky-600: #0284c7;
-
   --pink-50: #fdf2f8;
   --pink-100: #fce7f3;
   --pink-200: #fbcfe8;
   --pink-300: #f9a8d4;
   --pink-400: #f472b6;
   --pink-500: #ec4899;
-  --pink-600: #db2777;
-
   --cyan-50: #ecfeff;
   --cyan-100: #cffafe;
   --cyan-200: #a5f3fc;
@@ -43,30 +35,23 @@
   --cyan-400: #22d3ee;
   --cyan-500: #06b6d4;
   --cyan-600: #0891b2;
-
   --amber-50: #fffbeb;
   --amber-100: #fef3c7;
   --amber-200: #fde68a;
-  --amber-300: #fcd34d;
-  --amber-400: #fbbf24;
   --amber-500: #f59e0b;
   --amber-600: #d97706;
-
   --purple-50: #faf5ff;
   --purple-100: #f3e8ff;
   --purple-500: #a855f7;
-
   --rose-100: #ffe4e6;
-  --rose-400: #fb7185;
   --rose-500: #f43f5e;
-
   --indigo-100: #e0e7ff;
   --indigo-600: #4f46e5;
-
   --green-100: #dcfce7;
   --green-400: #4ade80;
-  --green-500: #07C160;
-
+  --green-500: #22c55e;
+  --green-600: #16a34a;
+  --red-500: #ef4444;
   --white: #ffffff;
 }
 
@@ -74,226 +59,176 @@ body {
   min-height: 100vh;
   background: linear-gradient(135deg, #e0f2fe 0%, #fce7f3 50%, #cffafe 100%);
   color: var(--slate-700);
-  padding: 1.5rem;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  padding: 0.75rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   line-height: 1.5;
 }
 
-/* ========== 布局 ========== */
-.container {
-  max-width: 72rem;
-  margin: 0 auto;
+html {
+  width: max-content;
+  min-width: 100%;
 }
 
-.grid {
-  display: grid;
-  gap: 1rem;
-}
-
-.grid-2 {
-  grid-template-columns: repeat(2, 1fr);
-}
-
-.grid-3 {
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.grid-4 {
-  grid-template-columns: repeat(4, 1fr);
-}
-
-.md-grid-1 {
-  grid-template-columns: 1fr;
-}
-
-.md-grid-2 {
-  grid-template-columns: repeat(2, 1fr);
-}
-
-.flex {
+/* ========== 主布局 ========== */
+.main-container {
   display: flex;
-}
-
-.flex-col {
-  flex-direction: column;
-}
-
-.items-center {
-  align-items: center;
-}
-
-.justify-center {
+  /* ⭐ 保留它 */
   justify-content: center;
+  /* ⭐ 居中 */
+  align-items: flex-start;
+  gap: 0.75rem;
+  max-width: 100%;
 }
 
-.justify-between {
-  justify-content: space-between;
+.server-area {
+  display: flex;
+  gap: 0.75rem;
+  flex-shrink: 0;
 }
 
-.gap-1 {
-  gap: 0.25rem;
-}
-
-.gap-2 {
-  gap: 0.5rem;
-}
-
-.gap-3 {
+.server-col {
+  width: 280px;
+  display: flex;
+  flex-direction: column;
   gap: 0.75rem;
 }
 
-.gap-4 {
-  gap: 1rem;
+/* Bot 区域：从右往左生成列 */
+.bot-area {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-start;
+  gap: 0.75rem;
 }
 
-.gap-6 {
-  gap: 1.5rem;
+.bot-column {
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
-/* ========== 卡片样式 ========== */
+/* ========== 通用卡片 ========== */
 .card {
   backdrop-filter: blur(10px);
   background: var(--bg-card);
   box-shadow: 0 4px 20px rgba(147, 197, 253, 0.15);
-  border-radius: 1rem;
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-  transition: box-shadow 0.3s ease;
-}
-
-.card:hover {
-  box-shadow: 0 8px 30px rgba(147, 197, 253, 0.25);
+  border-radius: 0.75rem;
+  padding: 0.75rem;
 }
 
 .card-title {
-  font-size: 1.25rem;
+  font-size: 0.85rem;
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin-bottom: 0.6rem;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.4rem;
   color: var(--slate-700);
 }
 
 .card-icon {
-  width: 2rem;
-  height: 2rem;
-  border-radius: 0.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 0.4rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .card-icon svg {
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 0.9rem;
+  height: 0.9rem;
 }
 
-/* ========== 边框颜色 ========== */
-.border-sky {
-  border: 1px solid var(--sky-200);
+.icon-sky {
+  background: var(--sky-100);
+  color: var(--sky-600);
 }
 
-.border-pink {
-  border: 1px solid var(--pink-200);
+.icon-pink {
+  background: var(--pink-100);
+  color: var(--pink-500);
 }
 
-.border-cyan {
-  border: 1px solid var(--cyan-200);
+.icon-cyan {
+  background: var(--cyan-100);
+  color: var(--cyan-600);
 }
 
-.border-amber {
-  border: 1px solid var(--amber-200);
+.icon-green {
+  background: var(--green-100);
+  color: var(--green-600);
 }
 
-/* ========== 头部 ========== */
-.header {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.header h1 {
-  font-size: 1.875rem;
-  font-weight: 700;
-  background: linear-gradient(90deg, var(--sky-400), var(--pink-400), var(--cyan-400));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.header p {
-  color: var(--slate-500);
-  margin-top: 0.5rem;
+.icon-amber {
+  background: var(--amber-100);
+  color: var(--amber-600);
 }
 
 /* ========== Bot 卡片 ========== */
 .bot-card {
-  background: linear-gradient(135deg, rgba(224, 242, 254, 0.9) 0%, rgba(252, 231, 243, 0.9) 100%);
+  background: linear-gradient(135deg, rgba(224, 242, 254, 0.9), rgba(252, 231, 243, 0.9));
   border-radius: 0.75rem;
-  padding: 1.25rem;
+  padding: 0.75rem;
   border: 1px solid var(--sky-100);
 }
 
 .bot-header {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
 }
 
 .bot-avatar {
   position: relative;
+  flex-shrink: 0;
 }
 
 .bot-avatar img {
-  width: 4rem;
-  height: 4rem;
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: 50%;
   border: 2px solid var(--sky-300);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .bot-avatar .status {
   position: absolute;
-  bottom: -4px;
-  right: -4px;
-  width: 1.25rem;
-  height: 1.25rem;
+  bottom: -1px;
+  right: -1px;
+  width: 0.7rem;
+  height: 0.7rem;
   background: var(--green-400);
   border-radius: 50%;
   border: 2px solid var(--white);
 }
 
+.bot-info {
+  flex: 1;
+  min-width: 0;
+}
+
 .bot-info h3 {
   font-weight: 700;
-  font-size: 1.125rem;
+  font-size: 0.85rem;
   color: var(--slate-700);
 }
 
 .bot-version {
-  font-size: 0.75rem;
+  font-size: 0.55rem;
   color: var(--slate-500);
   background: var(--sky-50);
-  padding: 0.25rem 0.5rem;
+  padding: 0.05rem 0.3rem;
   border-radius: 9999px;
   display: inline-block;
-  margin-top: 0.25rem;
 }
 
 .bot-badge {
-  margin-left: auto;
-  padding: 0.25rem 0.75rem;
+  padding: 0.15rem 0.4rem;
   border-radius: 9999px;
-  font-size: 0.875rem;
+  font-size: 0.6rem;
   font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-.bot-badge svg {
-  width: 1rem;
-  height: 1rem;
 }
 
 .badge-telegram {
@@ -306,16 +241,6 @@ body {
   color: var(--indigo-600);
 }
 
-.badge-qq {
-  background: var(--sky-100);
-  color: var(--sky-600);
-}
-
-.badge-wechat {
-  background: var(--green-100);
-  color: var(--green-500);
-}
-
 .badge-other {
   background: var(--amber-100);
   color: var(--amber-600);
@@ -323,24 +248,24 @@ body {
 
 .bot-stats {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0.75rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.4rem;
 }
 
 .bot-stat {
-  background: rgba(255, 255, 255, 0.6);
-  border-radius: 0.75rem;
-  padding: 0.75rem;
+  background: var(--bg-card-inner);
+  border-radius: 0.4rem;
+  padding: 0.35rem;
   text-align: center;
 }
 
 .bot-stat-value {
   font-weight: 700;
-  font-size: 1.25rem;
+  font-size: 0.85rem;
 }
 
 .bot-stat-label {
-  font-size: 0.75rem;
+  font-size: 0.55rem;
   color: var(--slate-500);
 }
 
@@ -356,103 +281,212 @@ body {
   color: var(--cyan-500);
 }
 
-.text-purple {
-  color: var(--purple-500);
+.text-green {
+  color: var(--green-500);
 }
 
 .text-amber {
   color: var(--amber-500);
 }
 
-.text-rose {
-  color: var(--rose-500);
+.bot-card.variant-pink {
+  background: linear-gradient(135deg, rgba(252, 231, 243, 0.9), rgba(224, 242, 254, 0.9));
+  border-color: var(--pink-100);
 }
 
-/* ========== 插件卡片 ========== */
+.bot-card.variant-cyan {
+  background: linear-gradient(135deg, rgba(207, 250, 254, 0.9), rgba(224, 242, 254, 0.9));
+  border-color: var(--cyan-100);
+}
+
+.bot-card.variant-amber {
+  background: linear-gradient(135deg, rgba(254, 243, 199, 0.9), rgba(255, 251, 235, 0.9));
+  border-color: var(--amber-100);
+}
+
+.bot-card.variant-green {
+  background: linear-gradient(135deg, rgba(220, 252, 231, 0.9), rgba(207, 250, 254, 0.9));
+  border-color: var(--green-100);
+}
+
+.bot-card.variant-pink .bot-avatar img {
+  border-color: var(--pink-300);
+}
+
+.bot-card.variant-cyan .bot-avatar img {
+  border-color: var(--cyan-300);
+}
+
+.bot-card.variant-amber .bot-avatar img {
+  border-color: var(--amber-200);
+}
+
+.bot-card.variant-green .bot-avatar img {
+  border-color: var(--green-400);
+}
+
+.bot-card.variant-pink .bot-version {
+  background: var(--pink-50);
+}
+
+.bot-card.variant-cyan .bot-version {
+  background: var(--cyan-50);
+}
+
+.bot-card.variant-amber .bot-version {
+  background: var(--amber-50);
+}
+
+.bot-card.variant-green .bot-version {
+  background: var(--green-100);
+}
+
+/* ========== 框架信息 ========== */
+.framework-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.framework-logo {
+  width: 2.5rem;
+  height: 2.5rem;
+  background: linear-gradient(135deg, var(--sky-100), var(--pink-100));
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--sky-600);
+}
+
+.framework-name {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.framework-ver {
+  font-size: 0.65rem;
+  color: var(--slate-500);
+}
+
+.framework-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.4rem;
+}
+
+.framework-stat {
+  background: linear-gradient(135deg, var(--sky-50), var(--pink-50));
+  border: 1px solid var(--sky-100);
+  border-radius: 0.4rem;
+  padding: 0.4rem;
+  text-align: center;
+}
+
+.framework-stat-value {
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--sky-600);
+}
+
+.framework-stat-label {
+  font-size: 0.5rem;
+  color: var(--slate-500);
+}
+
+/* ========== 插件信息 ========== */
+.plugin-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.4rem;
+}
+
 .plugin-item {
-  border-radius: 0.75rem;
-  padding: 1rem;
+  border-radius: 0.4rem;
+  padding: 0.5rem;
   text-align: center;
 }
 
 .plugin-count {
-  font-size: 1.875rem;
+  font-size: 1rem;
   font-weight: 700;
 }
 
 .plugin-label {
-  font-size: 0.875rem;
+  font-size: 0.55rem;
   color: var(--slate-600);
 }
 
-.bg-sky-gradient {
+.bg-sky {
   background: linear-gradient(135deg, var(--sky-50), var(--sky-100));
   border: 1px solid var(--sky-200);
 }
 
-.bg-pink-gradient {
+.bg-pink {
   background: linear-gradient(135deg, var(--pink-50), var(--pink-100));
   border: 1px solid var(--pink-200);
 }
 
-.bg-cyan-gradient {
+.bg-cyan {
   background: linear-gradient(135deg, var(--cyan-50), var(--cyan-100));
   border: 1px solid var(--cyan-200);
 }
 
-.bg-amber-gradient {
+.bg-amber {
   background: linear-gradient(135deg, var(--amber-50), var(--amber-100));
   border: 1px solid var(--amber-200);
 }
 
-/* ========== CPU 区域 ========== */
-.cpu-grid {
+/* ========== CPU 信息 ========== */
+.cpu-layout {
   display: grid;
-  gap: 1.5rem;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr auto;
+  gap: 0.75rem;
+  align-items: center;
 }
 
-.cpu-info-row {
+.cpu-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.cpu-row {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem 0;
+  font-size: 0.7rem;
+  padding: 0.25rem 0;
   border-bottom: 1px solid var(--sky-100);
 }
 
-.cpu-info-row:last-child {
+.cpu-row:last-child {
   border-bottom: none;
 }
 
-.cpu-info-label {
+.cpu-row-label {
   color: var(--slate-500);
 }
 
-.cpu-info-value {
+.cpu-row-value {
   font-weight: 500;
-  color: var(--slate-700);
 }
 
 .cpu-chart {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.cpu-circle {
   position: relative;
-  width: 12rem;
-  height: 12rem;
+  width: 4rem;
+  height: 4rem;
 }
 
-.cpu-circle svg {
+.cpu-chart svg {
   width: 100%;
   height: 100%;
-  transform: rotate(90deg) scaleX(-1);
+  transform: rotate(0deg) scaleX(-1);
 }
 
-.cpu-circle-text {
+.cpu-chart-text {
   position: absolute;
   inset: 0;
   display: flex;
@@ -462,73 +496,89 @@ body {
 }
 
 .cpu-percent {
-  font-size: 2.25rem;
+  font-size: 0.9rem;
   font-weight: 700;
   color: var(--slate-700);
 }
 
-.cpu-label {
-  font-size: 0.875rem;
+.cpu-percent-label {
+  font-size: 0.45rem;
   color: var(--slate-500);
 }
 
 .core-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 0.5rem;
-  margin-top: 1rem;
+  gap: 0.3rem;
+  margin-top: 0.6rem;
 }
 
 .core-item {
-  border-radius: 0.5rem;
-  padding: 0.5rem;
+  border-radius: 0.3rem;
+  padding: 0.25rem;
   text-align: center;
+  background: linear-gradient(135deg, var(--sky-50), var(--cyan-50));
+  border: 1px solid var(--sky-100);
 }
 
 .core-value {
   font-weight: 600;
+  font-size: 0.65rem;
+  color: var(--sky-600);
 }
 
 .core-label {
-  font-size: 0.75rem;
+  font-size: 0.45rem;
   color: var(--slate-500);
 }
 
-/* ========== 内存区域 ========== */
-.memory-card {
-  border-radius: 0.75rem;
-  padding: 1.25rem;
+/* ========== 内存信息 ========== */
+.memory-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.memory-item {
+  background: linear-gradient(135deg, var(--pink-50), var(--sky-50));
+  border: 1px solid var(--pink-100);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+.memory-item.swap {
+  background: linear-gradient(135deg, var(--cyan-50), var(--sky-50));
+  border-color: var(--cyan-100);
 }
 
 .memory-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.3rem;
 }
 
 .memory-title {
-  font-size: 1.125rem;
-  font-weight: 500;
-  color: var(--slate-700);
+  font-weight: 600;
+  font-size: 0.75rem;
 }
 
 .memory-percent {
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 0.75rem;
 }
 
-.progress-container {
-  height: 1rem;
+.progress-bar-container {
+  height: 0.4rem;
   background: var(--white);
   border-radius: 9999px;
   overflow: hidden;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.3rem;
 }
 
 .progress-bar {
   height: 100%;
   border-radius: 9999px;
-  transition: width 0.5s ease-in-out;
 }
 
 .progress-pink {
@@ -536,287 +586,297 @@ body {
 }
 
 .progress-cyan {
-  background: linear-gradient(90deg, var(--cyan-400), var(--pink-400));
+  background: linear-gradient(90deg, var(--cyan-400), var(--sky-400));
+}
+
+.progress-sky {
+  background: linear-gradient(90deg, var(--sky-400), var(--cyan-400));
 }
 
 .memory-footer {
   display: flex;
   justify-content: space-between;
-  font-size: 0.875rem;
+  font-size: 0.55rem;
   color: var(--slate-500);
 }
 
-.memory-stats {
-  display: grid;
+/* ========== 存储空间 ========== */
+.storage-list {
+  display: flex;
+  flex-direction: column;
   gap: 0.5rem;
-  margin-top: 1rem;
 }
 
-.memory-stat {
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 0.5rem;
+.storage-item {
+  background: linear-gradient(135deg, var(--sky-50), var(--cyan-50));
+  border: 1px solid var(--sky-100);
+  border-radius: 0.4rem;
   padding: 0.5rem;
-  text-align: center;
 }
 
-.memory-stat-label {
-  font-size: 0.75rem;
-  color: var(--slate-500);
-}
-
-.memory-stat-value {
-  font-weight: 600;
-}
-
-/* ========== 存储区域 ========== */
-.disk-card {
-  border-radius: 0.75rem;
-  padding: 1rem;
-}
-
-.disk-header {
+.storage-header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  margin-bottom: 0.5rem;
-}
-
-.disk-info {
-  display: flex;
   align-items: center;
-  gap: 0.75rem;
+  margin-bottom: 0.25rem;
 }
 
-.disk-icon {
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--white);
-  font-weight: 700;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.disk-name {
-  font-weight: 500;
-  color: var(--slate-700);
-}
-
-.disk-fs {
-  font-size: 0.875rem;
-  color: var(--slate-500);
-}
-
-.disk-usage {
-  text-align: right;
-}
-
-.disk-percent {
+.storage-name {
   font-weight: 600;
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
 }
 
-.disk-size {
-  font-size: 0.875rem;
+.storage-name svg {
+  width: 0.85rem;
+  height: 0.85rem;
+  color: var(--sky-500);
+}
+
+.storage-percent {
+  font-weight: 700;
+  font-size: 0.7rem;
+  color: var(--sky-600);
+}
+
+.storage-footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.5rem;
   color: var(--slate-500);
+  margin-top: 0.25rem;
 }
 
-.disk-progress {
-  height: 0.75rem;
-  background: var(--white);
+/* ========== 网络信息 ========== */
+.network-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.network-item {
+  background: linear-gradient(135deg, var(--cyan-50), var(--sky-50));
+  border: 1px solid var(--cyan-100);
+  border-radius: 0.4rem;
+  padding: 0.5rem;
+}
+
+.network-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.3rem;
+}
+
+.network-name {
+  font-weight: 600;
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.network-name svg {
+  width: 0.85rem;
+  height: 0.85rem;
+  color: var(--cyan-500);
+}
+
+.network-status {
+  font-size: 0.5rem;
+  padding: 0.08rem 0.3rem;
   border-radius: 9999px;
-  overflow: hidden;
+  background: var(--green-400);
+  color: white;
 }
 
-.progress-rose {
-  background: linear-gradient(90deg, var(--rose-400), var(--pink-400));
+.network-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.4rem;
 }
 
-.progress-sky {
-  background: linear-gradient(90deg, var(--cyan-400), var(--sky-400));
+.network-stat {
+  text-align: center;
+  padding: 0.25rem;
+  background: var(--bg-card-inner);
+  border-radius: 0.3rem;
 }
 
-.progress-purple {
-  background: linear-gradient(90deg, var(--pink-400), var(--purple-500));
+.network-stat-value {
+  font-weight: 700;
+  font-size: 0.7rem;
 }
 
-.progress-amber {
-  background: linear-gradient(90deg, var(--amber-400), #fb923c);
+.network-stat-label {
+  font-size: 0.45rem;
+  color: var(--slate-500);
 }
 
-/* ========== 网络区域 ========== */
-.network-card {
-  border-radius: 0.75rem;
-  padding: 1rem;
+/* ========== 进程信息 ========== */
+.process-header {
+  display: flex;
+  gap: 0.3rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.process-tab {
+  font-size: 0.55rem;
+  padding: 0.15rem 0.4rem;
+  border-radius: 9999px;
+  background: var(--slate-100);
+  color: var(--slate-600);
+}
+
+.process-tab.active {
+  background: var(--sky-500);
+  color: white;
+}
+
+.process-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.6rem;
+}
+
+.process-table th {
+  text-align: left;
+  padding: 0.3rem;
+  color: var(--slate-500);
+  border-bottom: 1px solid var(--sky-100);
+  font-weight: 500;
+}
+
+.process-table td {
+  padding: 0.3rem;
+  border-bottom: 1px solid var(--sky-50);
+}
+
+.process-table tr:hover {
+  background: var(--sky-50);
+}
+
+.process-name {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.25rem;
 }
 
-.network-icon {
-  width: 3rem;
-  height: 3rem;
-  border-radius: 0.75rem;
+.process-icon {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 0.15rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 0.45rem;
+  font-weight: 600;
 }
 
-.network-icon svg {
-  width: 1.5rem;
-  height: 1.5rem;
-  color: var(--white);
+.p-node {
+  background: var(--green-100);
+  color: var(--green-600);
 }
 
-.network-label {
-  font-size: 0.875rem;
-  color: var(--slate-500);
+.p-python {
+  background: var(--amber-100);
+  color: var(--amber-600);
 }
 
-.network-value {
-  font-size: 1.5rem;
-  font-weight: 700;
+.p-redis {
+  background: var(--rose-100);
+  color: var(--rose-500);
 }
 
-.network-speed {
-  font-size: 0.75rem;
+.p-nginx {
+  background: var(--cyan-100);
+  color: var(--cyan-600);
+}
+
+.p-docker {
+  background: var(--sky-100);
+  color: var(--sky-600);
+}
+
+.p-chrome {
+  background: var(--amber-100);
+  color: var(--amber-600);
+}
+
+.p-java {
+  background: var(--rose-100);
+  color: var(--rose-500);
+}
+
+.p-go {
+  background: var(--cyan-100);
+  color: var(--cyan-600);
+}
+
+.p-sh {
+  background: var(--slate-100);
+  color: var(--slate-600);
+}
+
+.process-children {
+  font-size: 0.5rem;
   color: var(--slate-400);
+  background: var(--slate-100);
+  padding: 0rem 0.2rem;
+  border-radius: 9999px;
+  margin-left: 0.1rem;
 }
 
-/* ========== 服务器信息区域 ========== */
-.server-info-item {
-  border-radius: 0.75rem;
-  padding: 1rem;
+.cpu-high {
+  color: var(--rose-500);
+  font-weight: 600;
 }
 
-.server-info-label {
-  font-size: 0.875rem;
+.cpu-medium {
+  color: var(--amber-500);
+  font-weight: 600;
+}
+
+.cpu-low {
+  color: var(--green-500);
+  font-weight: 600;
+}
+
+/* ========== 服务器信息 ========== */
+.server-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.4rem;
+}
+
+.server-item {
+  background: linear-gradient(135deg, var(--sky-50), var(--pink-50));
+  border: 1px solid var(--sky-100);
+  border-radius: 0.4rem;
+  padding: 0.4rem 0.5rem;
+}
+
+.server-label {
+  font-size: 0.5rem;
   color: var(--slate-500);
 }
 
-.server-info-value {
-  font-size: 1.125rem;
+.server-value {
+  font-size: 0.65rem;
   font-weight: 600;
   color: var(--slate-700);
+  word-break: break-all;
 }
 
 /* ========== 页脚 ========== */
 .footer {
   text-align: center;
-  margin-top: 2rem;
-  color: var(--slate-400);
-  font-size: 0.875rem;
-}
-
-/* ========== 渐变背景类 ========== */
-.bg-gradient-sky-pink {
-  background: linear-gradient(135deg, var(--sky-50), var(--pink-50));
-  border: 1px solid var(--sky-100);
-}
-
-.bg-gradient-cyan-sky {
-  background: linear-gradient(135deg, var(--cyan-50), var(--sky-50));
-  border: 1px solid var(--cyan-100);
-}
-
-.bg-gradient-pink-purple {
-  background: linear-gradient(135deg, var(--pink-50), var(--purple-50));
-  border: 1px solid var(--pink-100);
-}
-
-.bg-gradient-amber-orange {
-  background: linear-gradient(135deg, var(--amber-50), #fff7ed);
-  border: 1px solid var(--amber-100);
-}
-
-.bg-gradient-pink-rose {
-  background: linear-gradient(135deg, var(--pink-50), #fff1f2);
-  border: 1px solid var(--pink-100);
-}
-
-.bg-gradient-purple-pink {
-  background: linear-gradient(135deg, var(--purple-50), var(--pink-50));
-  border: 1px solid var(--purple-100);
-}
-
-.bg-gradient-sky-indigo {
-  background: linear-gradient(135deg, var(--sky-50), #eef2ff);
-  border: 1px solid var(--sky-100);
-}
-
-.bg-gradient-cyan-teal {
-  background: linear-gradient(135deg, var(--cyan-50), #f0fdfa);
-  border: 1px solid var(--cyan-100);
-}
-
-/* 图标背景 */
-.icon-sky-pink {
-  background: linear-gradient(135deg, var(--sky-100), var(--pink-100));
-}
-
-.icon-pink-cyan {
-  background: linear-gradient(135deg, var(--pink-100), var(--cyan-100));
-}
-
-.icon-cyan-sky {
-  background: linear-gradient(135deg, var(--cyan-100), var(--sky-100));
-}
-
-.icon-pink-purple {
-  background: linear-gradient(135deg, var(--pink-100), var(--purple-100));
-}
-
-.icon-sky {
-  background: linear-gradient(135deg, var(--sky-200), var(--sky-300));
-}
-
-.icon-cyan {
-  background: linear-gradient(135deg, var(--cyan-200), var(--cyan-300));
-}
-
-.icon-pink {
-  background: linear-gradient(135deg, var(--pink-200), var(--pink-300));
-}
-
-.icon-amber {
-  background: linear-gradient(135deg, var(--amber-200), var(--amber-300));
-}
-
-/* Bot card border variants */
-.bot-card.border-pink-light {
-  border-color: var(--pink-100);
-}
-
-.bot-card.border-cyan-light {
-  border-color: var(--cyan-100);
-}
-
-.bot-card.border-amber-light {
-  border-color: var(--amber-100);
-}
-
-.bot-avatar.border-pink img {
-  border-color: var(--pink-300);
-}
-
-.bot-avatar.border-cyan img {
-  border-color: var(--cyan-300);
-}
-
-.bot-avatar.border-amber img {
-  border-color: var(--amber-300);
-}
-
-.bot-version.bg-pink {
-  background: var(--pink-50);
-}
-
-.bot-version.bg-cyan {
-  background: var(--cyan-50);
-}
-
-.bot-version.bg-amber {
-  background: var(--amber-50);
+  padding: 0.75rem 0;
+  font-size: 0.65rem;
+  color: var(--slate-500);
+  margin-top: 0.75rem;
+  grid-column: 1 / -1;
 }
