@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/v1.0.3...v1.1.0) (2025-12-01)
+
+
+### Features
+
+* 支持显示系统信息，重构状态页面，优化硬盘数据 ([64c05df](https://github.com/ys7zTS/karin-plugin-nekostatus/commit/64c05df7a925486e18344b1aeb06524cb1f50811))
+
 ## [1.0.3](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/v1.0.2...v1.0.3) (2025-11-30)
 
 
