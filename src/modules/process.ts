@@ -5,7 +5,7 @@ import si from 'systeminformation'
  * @param opt
  * @returns
  */
-export async function getProcessInfo (opt: { sortBy: 'cpu' | 'mem' } = { sortBy: 'cpu' }) {
+export async function getProcessInfo (opt: { sortBy: 'cpu' | 'mem' } = { sortBy: 'mem' }) {
   const p = await si.processes()
   const f = p.list.filter(proc => proc.name !== 'System Idle Process')
   interface ob {
