@@ -21,16 +21,16 @@
   "main": "lib/index.js",
   "devDependencies": {
     "@karinjs/plugin-puppeteer": "^1.0.21",
-    "@types/express": "^5.0.1",
-    "@types/lodash": "^4.17.16",
-    "@types/node": "^20.17.8",
-    "cross-env": "^7.0.3",
-    "eslint": "^9.7.0",
-    "neostandard": "^0.11.9",
-    "node-karin": "*",
-    "tsup": "^8.5.0",
-    "tsx": "^4.19.2",
-    "typescript": "^5.5.3"
+    "@types/express": "^5.0.6",
+    "@types/lodash": "^4.17.21",
+    "@types/node": "^24.10.1",
+    "cross-env": "^10.1.0",
+    "eslint": "^9.39.1",
+    "neostandard": "^0.12.2",
+    "node-karin": "^1.13.0",
+    "tsup": "^8.5.1",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
   },
   "karin": {
     "main": "src/index.ts",
@@ -61,7 +61,7 @@
     "registry": "https://registry.npmjs.org"
   },
   "dependencies": {
-    "@puniyu/system-info": "^1.5.1",
+    "@puniyu/system-info": "*",
     "systeminformation": "^5.27.11"
   }
 }
