@@ -1,4 +1,4 @@
-import { getBotInfo, getCPUInfo, getMemoryInfo, getStorageInfo, getSystemInfo } from '@/modules'
+import { getBotInfo, getCPUInfo, getMemoryInfo, getNetworkInfo, getStorageInfo, getSystemInfo } from '@/modules'
 import { Cfg, render } from '@/utils'
 import karin, { config, getPlugins, uptime } from 'node-karin'
 
@@ -27,7 +27,8 @@ export const status = karin.command(regex, async (ctx) => {
       time: uptime(),
       bots: karin.getBotCount()
     },
-    sys: await getSystemInfo()
+    sys: await getSystemInfo(),
+    network: getNetworkInfo()
   }
   const img = await render('status/index', { status })
   ctx.reply(img)

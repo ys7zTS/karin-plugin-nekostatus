@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@puniyu/system-info':
+        specifier: ^1.5.1
+        version: 1.5.1
       systeminformation:
         specifier: ^5.27.11
         version: 5.27.11
@@ -478,6 +481,40 @@ packages:
   '@karinjs/ws@1.0.4':
     resolution: {integrity: sha512-RbaNNTd5wAH6sqwGaetoNyPVMydZu+9db4MxFxrKpzdRo3wMiR8eijdVo7S/jnWnoMHSZ5GJ5wTymrIsVCf9pw==}
     engines: {node: '>=18.0.0'}
+
+  '@puniyu/system-info-darwin-arm64@1.5.1':
+    resolution: {integrity: sha512-qPtB7/SHadi1zOAP2f88E80wrw3tUf0jPFFdL7QOWVM7pIdsHUI58Ot3GjMKUFFT24HQ2cXvh7LYC6s8EWs41A==}
+    engines: {node: '>= 12.22.0 < 13 || >= 14.17.0 < 15 || >= 15.12.0 < 16 || >= 16.0.0'}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@puniyu/system-info-darwin-x64@1.5.1':
+    resolution: {integrity: sha512-yHHobGa6gESIZMSuMki47lV+Ab1j9l/ol8ukYXqCL86BvhmVS3/lOKxLyHKqt/95R3fAF68mOaxquxS9sg6Ncw==}
+    engines: {node: '>= 12.22.0 < 13 || >= 14.17.0 < 15 || >= 15.12.0 < 16 || >= 16.0.0'}
+    cpu: [x64]
+    os: [darwin]
+
+  '@puniyu/system-info-linux-arm64-gnu@1.5.1':
+    resolution: {integrity: sha512-qsCUPyBiLRAGtUwXw6NHyu1m+/5dYY6Ji8yhArF9PxrVcvABw773jRfcyAU3qaXd5dQgBhUuFP1iTb/TYUgb9g==}
+    engines: {node: '>= 12.22.0 < 13 || >= 14.17.0 < 15 || >= 15.12.0 < 16 || >= 16.0.0'}
+    cpu: [arm64]
+    os: [linux]
+
+  '@puniyu/system-info-linux-x64-gnu@1.5.1':
+    resolution: {integrity: sha512-CJ62H45pdNfksAB2LcbyKCFYuxOgRymGuflu1Q4SmjsIatXGcPlSuK77i7qU7GkTM1GqmpMq0Da97K2z1LXing==}
+    engines: {node: '>= 12.22.0 < 13 || >= 14.17.0 < 15 || >= 15.12.0 < 16 || >= 16.0.0'}
+    cpu: [x64]
+    os: [linux]
+
+  '@puniyu/system-info-win32-x64-msvc@1.5.1':
+    resolution: {integrity: sha512-BC2is9TBrxq9VhPdZNEI8Xa8yIQqAnPlBYFA1ApKJailtLdlfYCiOoCk9PjXgBKDWS5YQQ8zzfaOHlOs4O784Q==}
+    engines: {node: '>= 12.22.0 < 13 || >= 14.17.0 < 15 || >= 15.12.0 < 16 || >= 16.0.0'}
+    cpu: [x64]
+    os: [win32]
+
+  '@puniyu/system-info@1.5.1':
+    resolution: {integrity: sha512-LsWUvyBXXDvgVUoHhfohCq0XBkjVo6qRz7e3OsZfvk1On6EmADbIxc4eWZSXqnWQC5GyWpJXJKX4CY0M/C4ZYQ==}
+    engines: {node: '>= 12.22.0 < 13 || >= 14.17.0 < 15 || >= 15.12.0 < 16 || >= 16.0.0'}
 
   '@rollup/rollup-android-arm-eabi@4.53.3':
     resolution: {integrity: sha512-mRSi+4cBjrRLoaal2PnqH82Wqyb+d3HsPUN/W+WslCXsZsyHa9ZeQQX/pQsZaVIWDkPcpV6jJ+3KLbTbgnwv8w==}
@@ -2006,6 +2043,29 @@ snapshots:
       bindings: 1.5.0
 
   '@karinjs/ws@1.0.4': {}
+
+  '@puniyu/system-info-darwin-arm64@1.5.1':
+    optional: true
+
+  '@puniyu/system-info-darwin-x64@1.5.1':
+    optional: true
+
+  '@puniyu/system-info-linux-arm64-gnu@1.5.1':
+    optional: true
+
+  '@puniyu/system-info-linux-x64-gnu@1.5.1':
+    optional: true
+
+  '@puniyu/system-info-win32-x64-msvc@1.5.1':
+    optional: true
+
+  '@puniyu/system-info@1.5.1':
+    optionalDependencies:
+      '@puniyu/system-info-darwin-arm64': 1.5.1
+      '@puniyu/system-info-darwin-x64': 1.5.1
+      '@puniyu/system-info-linux-arm64-gnu': 1.5.1
+      '@puniyu/system-info-linux-x64-gnu': 1.5.1
+      '@puniyu/system-info-win32-x64-msvc': 1.5.1
 
   '@rollup/rollup-android-arm-eabi@4.53.3':
     optional: true

@@ -22,30 +22,71 @@ export const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, 
 export const time = (format = 'YYYY-MM-DD HH:mm:ss') => moment().format(format)
 
 /**
- * 根据字节数自动转换单位
- * @param bytes - 字节数
+ * 格式化字节
+ * @param value 字节
  * @param options
  * @returns
  */
-export const format = (bytes: number, options: { minMB?: number, minGB?: number, decimals?: number } = {}) => {
-  const { minMB = 1024, minGB = 1024, decimals = 2 } = options
+export const format = (
+  value: number,
+  options: {
+    /** 传入的字节单位 */
+    from?: 'B' | 'KB' | 'MB' | 'GB' | 'TB'
+    /** 强制输出单位 */
+    to?: 'B' | 'KB' | 'MB' | 'GB' | 'TB'
+    /** 保留的小数位数 */
+    decimals?: number
+    /** 是否使用短格式(B->B,KB->K,MB->M,GB->G,TB->T) */
+    short?: boolean
+    /** 是否自动去除小数最末尾的0 */
+    trimZero?: boolean
+  } = {}
+) => {
+  const {
+    from = 'B',
+    to,
+    decimals = 2,
+    short = false,
+    trimZero = true,
+  } = options
 
-  if (bytes === 0) return '0 B'
+  const units = ['B', 'KB', 'MB', 'GB', 'TB'] as const
+  const factor = 1024
 
-  const MB = bytes / 1024 / 1024
-  const GB = bytes / 1024 / 1024 / 1024
-  const TB = bytes / 1024 / 1024 / 1024 / 1024
+  // 输入单位转换成 bytes
+  let bytes = value * factor ** units.indexOf(from)
 
-  if (TB >= 1 && GB >= minGB) {
-    return `${TB.toFixed(decimals)} TB`
-  } else if (GB >= 1 && MB >= minMB) {
-    return `${GB.toFixed(decimals)} GB`
-  } else if (MB >= 1) {
-    return `${MB.toFixed(decimals)} MB`
-  } else {
-    const KB = bytes / 1024
-    return KB >= 1 ? `${KB.toFixed(decimals)} KB` : `${bytes} B`
+  const formatNumber = (num: number) => {
+    let s = num.toFixed(decimals)
+    if (trimZero) {
+      // 去尾零：1.00 → 1, 1.20 → 1.2
+      s = s.replace(/\.?0+$/, '')
+    }
+    return s
   }
+
+  // 强制输出单位
+  if (to) {
+    const result = bytes / factor ** units.indexOf(to)
+    const numberStr = formatNumber(result)
+    return short
+      ? numberStr + to[0]            // KB → K, MB → M ...
+      : numberStr + ' ' + to
+  }
+
+  // 自动选择最佳单位
+  let unitIndex = 0
+  while (bytes >= factor && unitIndex < units.length - 1) {
+    bytes /= factor
+    unitIndex++
+  }
+
+  const numberStr = formatNumber(bytes)
+  const unit = units[unitIndex]
+
+  return short
+    ? numberStr + unit[0]            // B → B, KB → K, MB → M, GB → G, TB → T
+    : numberStr + ' ' + unit
 }
 
 /**

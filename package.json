@@ -61,6 +61,7 @@
     "registry": "https://registry.npmjs.org"
   },
   "dependencies": {
+    "@puniyu/system-info": "^1.5.1",
     "systeminformation": "^5.27.11"
   }
 }
