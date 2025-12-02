@@ -53,28 +53,23 @@ export const format = (
   const units = ['B', 'KB', 'MB', 'GB', 'TB'] as const
   const factor = 1024
 
-  // 输入单位转换成 bytes
   let bytes = value * factor ** units.indexOf(from)
 
   const formatNumber = (num: number) => {
     let s = num.toFixed(decimals)
     if (trimZero) {
-      // 去尾零：1.00 → 1, 1.20 → 1.2
       s = s.replace(/\.?0+$/, '')
     }
     return s
   }
-
-  // 强制输出单位
   if (to) {
     const result = bytes / factor ** units.indexOf(to)
     const numberStr = formatNumber(result)
     return short
-      ? numberStr + to[0]            // KB → K, MB → M ...
+      ? numberStr + to[0]
       : numberStr + ' ' + to
   }
 
-  // 自动选择最佳单位
   let unitIndex = 0
   while (bytes >= factor && unitIndex < units.length - 1) {
     bytes /= factor
@@ -85,7 +80,7 @@ export const format = (
   const unit = units[unitIndex]
 
   return short
-    ? numberStr + unit[0]            // B → B, KB → K, MB → M, GB → G, TB → T
+    ? numberStr + unit[0]
     : numberStr + ' ' + unit
 }
 
