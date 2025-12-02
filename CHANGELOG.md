@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.2.0](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/v1.1.1...v1.2.0) (2025-12-02)
+
+
+### Features
+
+* 优化bytes计算逻辑，新增网络信息显示 ([5d14b70](https://github.com/ys7zTS/karin-plugin-nekostatus/commit/5d14b70c5bb5834185170231039ae67d4b618565))
+
+
+### Bug Fixes
+
+* 1 ([b9f6ec3](https://github.com/ys7zTS/karin-plugin-nekostatus/commit/b9f6ec3fe36611b84954976b16fc235edc84ed29))
+* 优化Redis 消息统计逻辑 ([ac90284](https://github.com/ys7zTS/karin-plugin-nekostatus/commit/ac90284544f34ee245701a1999ec7f0d26ad7cc4))
+
 ## [1.1.1](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/v1.1.0...v1.1.1) (2025-12-01)
 
 
