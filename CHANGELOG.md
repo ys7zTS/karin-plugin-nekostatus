@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.3.0](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/v1.2.1...v1.3.0) (2025-12-20)
+
+
+### Features
+
+* 重构样式，#状态跟pro使用两套样式 ([dfa3821](https://github.com/ys7zTS/karin-plugin-nekostatus/commit/dfa3821bc94dce777ed493cfa9e19a230d75ddd9))
+
+
+### Bug Fixes
+
+* cli ([ec6d318](https://github.com/ys7zTS/karin-plugin-nekostatus/commit/ec6d318bc825b8a9d26ba325f73b80ed7874c284))
+* package ([2d7bc28](https://github.com/ys7zTS/karin-plugin-nekostatus/commit/2d7bc28db6657cc60e2f3ab6bf36a93b74c8dc0c))
+
 ## [1.2.1](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/v1.2.0...v1.2.1) (2025-12-02)
 
 
