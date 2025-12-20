@@ -33,7 +33,7 @@
 
 ### NPM 安装（推荐）
 # 在Karin根目录执行
-```bash
+```sh
 pnpm add @ys7zts/karin-plugin-nekostatus -w
 ```
 
