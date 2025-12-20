@@ -39,6 +39,5 @@ jobs:
       # 删除开发依赖
       - run: npm pkg delete devDependencies
         if: ${{ steps.release.outputs.release_created }}
-      # 发布带npm
       - run: npm run pub
         if: ${{ steps.release.outputs.release_created }}
