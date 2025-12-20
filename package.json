@@ -4,13 +4,13 @@
   "author": "瑜笙",
   "type": "module",
   "description": "基于Karin编写的服务器状态",
-  "homepage": "https://github.com/KarinJS/karin",
+  "homepage": "https://github.com/ys7zTS/karin-plugin-nekostatus",
   "bugs": {
-    "url": "https://github.com/KarinJS/karin/issues"
+    "url": "https://github.com/ys7zTS/karin-plugin-nekostatus/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KarinJS/karin.git"
+    "url": "git+https://github.com/ys7zTS/karin-plugin-nekostatus.git"
   },
   "scripts": {
     "app": "node lib/app.js",
