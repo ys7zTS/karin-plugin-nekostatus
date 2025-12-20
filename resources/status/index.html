@@ -4,436 +4,281 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>猫猫状态</title>
+  <title>猫猫状态 Pro</title>
   <link rel="stylesheet" href="{{pluResPath}}/status/index.css">
-  <!-- {{pluResPath}}/status/ -->
 </head>
 
 <body>
   <div class="main-container">
-    <div class="bot-area">
-      {{each status.bots v index}}
-      {{set variants = ['variant-pink', 'variant-cyan', 'variant-amber', 'variant-green']}}
-      {{set variantClass = variants[index % variants.length]}}
-      {{if index % 6 === 0}}
-      <div class="bot-column">
-        {{/if}}
-        <div class="bot-card {{variantClass}}">
-          <div class="bot-header">
-            <div class="bot-avatar"><img src="{{v.bot.avatar}}" alt="Bot"><span class="status"></span>
-            </div>
-            <div class="bot-info">
-              <h3>{{v.bot.nickname}}</h3><span class="bot-version">{{v.adapter.name}} v{{v.adapter.version}}</span>
-            </div>
-            {{if v.adapter.platform === 'telegram'}}
-            <span class="bot-badge badge-telegram">Telegram</span>
-            {{else if v.adapter.platform === 'discord'}}
-            <span class="bot-badge badge-discord">Discord</span>
-            {{else if v.adapter.platform === 'qq'}}
-            <span class="bot-badge badge-telegram">QQ</span>
-            {{else}}
-            <span class="bot-badge badge-other">{{v.adapter.platform}}</span>
-            {{/if}}
-          </div>
-          <div class="bot-stats">
-            <div class="bot-stat"><span class="bot-stat-value text-sky">{{v.bot.friends}}</span>
-              <span class="bot-stat-label">好友</span>
-            </div>
-            <div class="bot-stat"><span class="bot-stat-value text-pink">{{v.bot.groups}}</span>
-              <span class="bot-stat-label">群聊</span>
-            </div>
-            <div class="bot-stat"><span class="bot-stat-value text-cyan">{{v.bot.send}}</span>
-              <span class="bot-stat-label">发送</span>
-            </div>
-            <div class="bot-stat"><span class="bot-stat-value text-green">{{v.bot.receive}}</span>
-              <span class="bot-stat-label">接收</span>
+    <!-- Column 1: Bot List -->
+    <div class="column bot-column">
+      {{each status.bots v}}
+      <div class="bot-card-pro">
+        <div class="bot-pro-header">
+          <img src="{{v.bot.avatar}}" class="bot-pro-avatar">
+          <div class="bot-pro-info">
+            <div class="bot-pro-name">{{v.bot.nickname}}</div>
+            <div class="bot-pro-meta">
+              <span class="badge">{{v.adapter.platform}}</span>
+              <span class="badge pink">{{v.adapter.name}}</span>
             </div>
           </div>
         </div>
-        {{if (index + 1) % 6 === 0 || index === status.bots.length - 1}}
+        <div class="bot-pro-stats">
+          <div class="stat-box">
+            <div class="stat-num">{{v.bot.friends}}</div>
+            <div class="stat-name">好友</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">{{v.bot.groups}}</div>
+            <div class="stat-name">群聊</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">{{v.bot.send}}</div>
+            <div class="stat-name">发送</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">{{v.bot.receive}}</div>
+            <div class="stat-name">接收</div>
+          </div>
+        </div>
       </div>
-      {{/if}}
       {{/each}}
     </div>
-    <!-- ========== 服务器信息区 ========== -->
-    <div class="server-area">
-      <div class="server-col">
-        <!-- 框架信息 -->
-        <div class="card">
-          <div class="framework-header">
-            <div class="framework-logo">K</div>
-            <div>
-              <div class="framework-name">{{status.k.name}}</div>
-              <div class="framework-ver">v{{status.k.version}}</div>
-            </div>
-          </div>
-          <div class="framework-stats">
-            <div class="framework-stat">
-              <div class="framework-stat-value">{{status.k.bots}}</div>
-              <div class="framework-stat-label">已连接 Bot</div>
-            </div>
-            <div class="framework-stat">
-              <div class="framework-stat-value" style="color: var(--green-500);">{{status.k.time}}</div>
-              <div class="framework-stat-label">运行时间</div>
-            </div>
+
+    <!-- Column 2: Core System Info -->
+    <div class="column">
+      <!-- Framework Info -->
+      <div class="card framework-card">
+        <div class="card-header">
+          <div class="icon-box pink">K</div>
+          <div class="header-text">
+            <div class="title">{{status.k.name}}</div>
+            <div class="subtitle">v{{status.k.version}}</div>
           </div>
         </div>
-
-        <!-- 插件信息 -->
-        <div class="card">
-          <div class="card-title">
-            <span class="card-icon icon-pink">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path
-                  d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
-              </svg>
-            </span>
-            插件信息
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-value">{{status.k.time}}</div>
+            <div class="stat-label">运行时间</div>
           </div>
-          <div class="plugin-grid">
-            <div class="plugin-item bg-sky">
-              <div class="plugin-count text-sky">{{status.plugin.all}}</div>
-              <div class="plugin-label">全部插件</div>
-            </div>
-            <div class="plugin-item bg-pink">
-              <div class="plugin-count text-pink">{{status.plugin.git}}</div>
-              <div class="plugin-label">Git 插件</div>
-            </div>
-            <div class="plugin-item bg-cyan">
-              <div class="plugin-count text-cyan">{{status.plugin.npm}}</div>
-              <div class="plugin-label">NPM 插件</div>
-            </div>
-            <div class="plugin-item bg-amber">
-              <div class="plugin-count text-amber">{{status.plugin.js}}</div>
-              <div class="plugin-label">应用插件</div>
-            </div>
+          <div class="stat-item">
+            <div class="stat-value">{{status.sys.node_version}}</div>
+            <div class="stat-label">Node版本</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">{{status.k.bots}}</div>
+            <div class="stat-label">Bot数量</div>
           </div>
         </div>
+      </div>
 
-        <!-- CPU 信息 -->
-        <div class="card">
-          <div class="card-title">
-            <span class="card-icon icon-sky">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="4" y="4" width="16" height="16" rx="2" />
-                <rect x="9" y="9" width="6" height="6" />
-                <path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3" />
-              </svg>
-            </span>
-            CPU 信息
+      <!-- Plugin Info (Moved here) -->
+      <div class="card">
+        <div class="card-title">
+          <span class="card-icon icon-cyan">🧩</span> 插件统计
+        </div>
+        <div class="plugin-grid">
+          <div class="plugin-item">
+            <div class="plugin-count">{{status.plugin.all}}</div>
+            <div class="plugin-label">总共</div>
           </div>
-          <div class="cpu-layout">
-            <div class="cpu-details">
-              <div class="cpu-row"><span class="cpu-row-label">型号</span><span
-                  class="cpu-row-value">{{status.cpu.manufacturer}}(R) {{status.cpu.brand}}</span></div>
-              <div class="cpu-row"><span class="cpu-row-label">核心/线程</span><span
-                  class="cpu-row-value">{{status.cpu.cores}}核{{status.cpu.threads}}线程</span>
-              </div>
-              <div class="cpu-row"><span class="cpu-row-label">频率</span><span
-                  class="cpu-row-value">{{status.cpu.baseSpeed}} / {{status.cpu.maxSpeed}}</span>
-              </div>
-              <div class="cpu-row"><span class="cpu-row-label">缓存</span><span
-                  class="cpu-row-value">{{status.cpu.l3cache}} L3</span>
-              </div>
-            </div>
-            <div class="cpu-chart">
-              <svg viewBox="0 0 36 36">
-                <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none"
-                  stroke="var(--sky-100)" stroke-width="3" />
-                <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none"
-                  stroke="url(#cpuGradient)" stroke-width="3" stroke-dasharray="{{status.cpu.totalLoad}}, 100" />
-                <defs>
-                  <linearGradient id="cpuGradient">
-                    <stop offset="0%" stop-color="var(--sky-400)" />
-                    <stop offset="100%" stop-color="var(--cyan-400)" />
-                  </linearGradient>
-                </defs>
-              </svg>
-              <div class="cpu-chart-text">
-                <span class="cpu-percent">{{status.cpu.totalLoad}}%</span>
-                <span class="cpu-percent-label">使用率</span>
-              </div>
-            </div>
+          <div class="plugin-item">
+            <div class="plugin-count">{{status.plugin.git}}</div>
+            <div class="plugin-label">Git</div>
           </div>
-          <div class="core-grid">
-            {{each status.cpu.cpus}}
-            <div class="core-item">
-              <div class="core-value">{{$value.usage}}%</div>
-              <div class="core-label">Core {{$value.core}}</div>
-            </div>
-            {{/each}}
+          <div class="plugin-item">
+            <div class="plugin-count">{{status.plugin.npm}}</div>
+            <div class="plugin-label">NPM</div>
+          </div>
+          <div class="plugin-item">
+            <div class="plugin-count">{{status.plugin.js}}</div>
+            <div class="plugin-label">应用</div>
           </div>
         </div>
+      </div>
 
-        <!-- 内存信息 -->
-        <div class="card">
-          <div class="card-title">
-            <span class="card-icon icon-pink">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="2" y="6" width="20" height="12" rx="2" />
-                <path d="M6 6V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2M6 18v2M18 18v2" />
-              </svg>
-            </span>
-            内存信息
-          </div>
-          <div class="memory-grid">
-            <div class="memory-item">
-              <div class="memory-header">
-                <span class="memory-title">RAM</span>
-                <span class="memory-percent text-pink">{{status.mem.mem.usage}}%</span>
-              </div>
-              <div class="progress-bar-container">
-                <div class="progress-bar progress-pink" style="width: {{status.mem.mem.usage}}%;"></div>
-              </div>
-              <div class="memory-footer">
-                <span>{{status.mem.mem.used}} / {{status.mem.mem.total}}</span>
-                <span>缓存 {{status.mem.mem.cached}}</span>
-              </div>
-            </div>
-            <div class="memory-item swap">
-              <div class="memory-header">
-                <span class="memory-title">SWAP</span>
-                <span class="memory-percent text-cyan">{{status.mem.swap.usage}}%</span>
-              </div>
-              <div class="progress-bar-container">
-                <div class="progress-bar progress-cyan" style="width: {{status.mem.swap.usage}}%;"></div>
-              </div>
-              <div class="memory-footer">
-                <span>{{status.mem.swap.used}} / {{status.mem.swap.total}}</span>
-                <span>可用 {{status.mem.swap.free}}</span>
-              </div>
-            </div>
-          </div>
+      <!-- CPU Info -->
+      <div class="card">
+        <div class="card-title">
+          <span class="card-icon icon-blue">🧠</span> CPU信息
         </div>
-
-        <!-- 存储空间 -->
-        <div class="card">
-          <div class="card-title">
-            <span class="card-icon icon-cyan">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path
-                  d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
-              </svg>
-            </span>
-            存储空间
+        <div class="cpu-info">
+          <div class="cpu-model">{{status.cpu.brand}}</div>
+          <div class="cpu-details-grid">
+            <div class="detail-box">
+              <div class="detail-val">{{status.cpu.cores}}</div>
+              <div class="detail-lbl">核心</div>
+            </div>
+            <div class="detail-box">
+              <div class="detail-val">{{status.cpu.threads}}</div>
+              <div class="detail-lbl">线程</div>
+            </div>
+            <div class="detail-box">
+              <div class="detail-val">{{status.cpu.speed}}</div>
+              <div class="detail-lbl">频率</div>
+            </div>
+            <div class="detail-box">
+              <div class="detail-val">{{status.cpu.l3cache}}</div>
+              <div class="detail-lbl">L3缓存</div>
+            </div>
           </div>
-          <div class="storage-list">
-            {{each status.disk}}
-            <div class="storage-item">
-              <div class="storage-header">
-                <span class="storage-name">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="3" y="3" width="18" height="18" rx="2" />
-                    <path d="M3 9h18M9 21V9" />
-                  </svg>
-                  {{$value.mount}} ({{$value.type}})
-                </span>
-                <span class="storage-percent">{{$value.use}}%</span>
+          <div class="cpu-gauge-container">
+            <div class="gauge-wrapper">
+              <div class="progress-circle" style="--percent: {{status.cpu.totalLoad}}">
+                <div class="progress-value">{{status.cpu.totalLoad}}%</div>
               </div>
-              <div class="progress-bar-container">
-                <div class="progress-bar progress-sky" style="width: {{$value.use}}%;"></div>
-              </div>
-              <div class="storage-footer">
-                <span>已用 {{$value.used}}</span>
-                <span>共 {{$value.size}}</span>
-              </div>
+              <div class="gauge-label">总使用率</div>
+            </div>
+          </div>
+          <div class="cores-grid">
+            {{each status.cpu.cpus v}}
+            <div class="core-box">
+              <div class="core-label">核心 {{v.core}}</div>
+              <div class="core-value">{{v.usage}}%</div>
             </div>
             {{/each}}
           </div>
         </div>
       </div>
 
-      <!-- 服务器右列：网络、进程、服务器信息 -->
-      <div class="server-col">
-        <!-- 网络信息 -->
-        <div class="card">
-          <div class="card-title">
-            <span class="card-icon icon-cyan">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path
-                  d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01" />
-              </svg>
-            </span>
-            网络信息
-          </div>
-          <div class="network-list">
-            {{each status.network}}
-            <div class="network-item">
-              <div class="network-header">
-                <span class="network-name">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="2" y="2" width="20" height="8" rx="2" />
-                    <rect x="2" y="14" width="20" height="8" rx="2" />
-                    <circle cx="6" cy="6" r="1" />
-                    <circle cx="6" cy="18" r="1" />
-                  </svg>
-                  {{$value.name}}
-                </span>
-                <span class="network-status">UP</span>
-              </div>
-              <div class="network-stats">
-                <div class="network-stat"><span class="network-stat-value text-green">↑
-                    {{$value.totalUpload}}</span><span class="network-stat-label">总上传</span></div>
-                <div class="network-stat"><span class="network-stat-value text-sky">↓
-                    {{$value.totalDownload}}</span><span class="network-stat-label">总下载</span></div>
-                <div class="network-stat"><span class="network-stat-value text-green">↑ {{$value.upload}}</span><span
-                    class="network-stat-label">上传速度</span></div>
-                <div class="network-stat"><span class="network-stat-value text-sky">↓ {{$value.download}}</span><span
-                    class="network-stat-label">下载速度</span></div>
-              </div>
-            </div>
-            {{/each}}
-          </div>
+      <!-- Memory Info -->
+      <div class="card">
+        <div class="card-title">
+          <span class="card-icon icon-pink">💾</span> 内存信息
         </div>
-
-        <!-- 进程监控 -->
-        <div class="card">
-          <div class="card-title">
-            <span class="card-icon icon-green">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                <polyline points="14 2 14 8 20 8" />
-                <line x1="16" y1="13" x2="8" y2="13" />
-                <line x1="16" y1="17" x2="8" y2="17" />
-              </svg>
-            </span>
-            进程监控(暂时无法使用)
+        <div class="memory-stats">
+          <div class="mem-row">
+            <div class="mem-header">
+              <div class="mem-label">RAM</div>
+              <div class="mem-value">{{status.mem.mem.used}} / {{status.mem.mem.total}}</div>
+            </div>
+            <div class="mem-bar-container">
+              <div class="mem-bar" style="width: {{status.mem.mem.usage}}%"></div>
+            </div>
           </div>
-          <div class="process-header">
-            <span class="process-tab active">全部: 165</span>
-            <span class="process-tab">运行中: 12</span>
-            <span class="process-tab">休眠: 153</span>
-          </div>
-          <table class="process-table">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>PID</th>
-                <th>CPU</th>
-                <th>MEM</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><span class="process-name"><span class="process-icon p-node">N</span>node<span
-                      class="process-children">10</span></span></td>
-                <td>2735</td>
-                <td class="cpu-high">9.2%</td>
-                <td>256 MB</td>
-              </tr>
-              <tr>
-                <td><span class="process-name"><span class="process-icon p-docker">D</span>dockerd<span
-                      class="process-children">12</span></span></td>
-                <td>1892</td>
-                <td class="cpu-medium">4.5%</td>
-                <td>189 MB</td>
-              </tr>
-              <tr>
-                <td><span class="process-name"><span class="process-icon p-python">P</span>python<span
-                      class="process-children">3</span></span></td>
-                <td>3421</td>
-                <td class="cpu-medium">3.1%</td>
-                <td>412 MB</td>
-              </tr>
-              <tr>
-                <td><span class="process-name"><span class="process-icon p-nginx">N</span>nginx<span
-                      class="process-children">4</span></span></td>
-                <td>1024</td>
-                <td class="cpu-low">1.2%</td>
-                <td>52 MB</td>
-              </tr>
-              <tr>
-                <td><span class="process-name"><span class="process-icon p-redis">R</span>redis-server</span></td>
-                <td>2048</td>
-                <td class="cpu-low">0.8%</td>
-                <td>96 MB</td>
-              </tr>
-              <tr>
-                <td><span class="process-name"><span class="process-icon p-go">G</span>go-cqhttp</span></td>
-                <td>4521</td>
-                <td class="cpu-low">0.6%</td>
-                <td>78 MB</td>
-              </tr>
-              <tr>
-                <td><span class="process-name"><span class="process-icon p-chrome">C</span>chrome<span
-                      class="process-children">8</span></span></td>
-                <td>5632</td>
-                <td class="cpu-low">0.5%</td>
-                <td>524 MB</td>
-              </tr>
-              <tr>
-                <td><span class="process-name"><span class="process-icon p-java">J</span>java<span
-                      class="process-children">2</span></span></td>
-                <td>3890</td>
-                <td class="cpu-low">0.4%</td>
-                <td>312 MB</td>
-              </tr>
-              <tr>
-                <td><span class="process-name"><span class="process-icon p-sh">S</span>sh<span
-                      class="process-children">5</span></span></td>
-                <td>1256</td>
-                <td class="cpu-low">0.1%</td>
-                <td>8 MB</td>
-              </tr>
-              <tr>
-                <td><span class="process-name"><span class="process-icon p-node">N</span>npm</span></td>
-                <td>6721</td>
-                <td class="cpu-low">0.1%</td>
-                <td>45 MB</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <!-- 服务器信息 -->
-        <div class="card">
-          <div class="card-title">
-            <span class="card-icon icon-amber">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="2" y="2" width="20" height="8" rx="2" />
-                <rect x="2" y="14" width="20" height="8" rx="2" />
-                <circle cx="6" cy="6" r="1" />
-                <circle cx="6" cy="18" r="1" />
-              </svg>
-            </span>
-            服务器信息
-          </div>
-          <div class="server-grid">
-            <div class="server-item">
-              <div class="server-label">主机名</div>
-              <div class="server-value">{{status.sys.hostname}}</div>
+          <div class="mem-row">
+            <div class="mem-header">
+              <div class="mem-label">Swap</div>
+              <div class="mem-value">{{status.mem.swap.used}} / {{status.mem.swap.total}}</div>
             </div>
-            <div class="server-item">
-              <div class="server-label">操作系统</div>
-              <div class="server-value">{{status.sys.system}}</div>
-            </div>
-            <div class="server-item">
-              <div class="server-label">内核版本</div>
-              <div class="server-value">{{status.sys.kernel}}</div>
-            </div>
-            <div class="server-item">
-              <div class="server-label">架构</div>
-              <div class="server-value">{{status.sys.arch}}</div>
-            </div>
-            <div class="server-item">
-              <div class="server-label">运行时间</div>
-              <div class="server-value">{{status.sys.runtime}}</div>
-            </div>
-            <div class="server-item">
-              <div class="server-label">时区</div>
-              <div class="server-value">{{status.sys.time}}</div>
+            <div class="mem-bar-container">
+              <div class="mem-bar" style="width: {{status.mem.swap.usage}}%"></div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-  </div>
+    <!-- Column 3: Extended Info -->
+    <div class="column">
+      <!-- Network Info -->
+      <div class="card">
+        <div class="card-title">
+          <span class="card-icon icon-blue">🌐</span> 网络信息
+        </div>
+        <div class="network-grid">
+          <div class="net-item">
+            <div class="net-label">上传</div>
+            <div class="net-value">{{status.network.up}}</div>
+            <div class="net-total">总: {{status.network.upTotal}}</div>
+          </div>
+          <div class="net-item">
+            <div class="net-label">下载</div>
+            <div class="net-value">{{status.network.down}}</div>
+            <div class="net-total">总: {{status.network.downTotal}}</div>
+          </div>
+        </div>
+      </div>
 
-  <div class="footer">
-    {{sys.copyright}}
-  </div>
+      <!-- Storage Info -->
+      <div class="card">
+        <div class="card-title">
+          <span class="card-icon icon-cyan">💿</span> 存储空间
+        </div>
+        <div class="disk-list">
+          {{each status.disk v}}
+          <div class="disk-item">
+            <div class="disk-header">
+              <span class="disk-name">{{v.name}}</span>
+              <span class="disk-usage">{{v.use}}%</span>
+            </div>
+            <div class="disk-bar-container">
+              <div class="disk-bar" style="width: {{v.use}}%"></div>
+            </div>
+            <div class="disk-details">{{v.used}} / {{v.size}}</div>
+          </div>
+          {{/each}}
+        </div>
+      </div>
 
+      <!-- Process Monitor -->
+      <div class="card">
+        <div class="card-title">
+          <span class="card-icon icon-pink">📊</span> 进程监控
+        </div>
+        <div class="process-summary">
+          <span class="p-tag">总: {{status.process.all}}</span>
+          <span class="p-tag run">运行: {{status.process.running}}</span>
+          <span class="p-tag sleep">休眠: {{status.process.sleeping}}</span>
+          <span class="p-tag block">阻塞: {{status.process.blocked}}</span>
+        </div>
+        <table class="process-table">
+          <thead>
+            <tr>
+              <th>名称</th>
+              <th>PID</th>
+              <th>CPU</th>
+              <th>Mem</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{each status.process.list v}}
+            <tr>
+              <td>{{v.name}}</td>
+              <td>{{v.pid}}</td>
+              <td>{{v.cpu}}%</td>
+              <td>{{v.mem}}%</td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Server Details -->
+      <div class="card">
+        <div class="card-title">
+          <span class="card-icon icon-cyan">🖥️</span> 服务器信息
+        </div>
+        <div class="server-details-list">
+          <div class="detail-item">
+            <span class="detail-label">主机名</span>
+            <span class="detail-value">{{status.sys.hostname}}</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">操作系统</span>
+            <span class="detail-value">{{status.sys.system}}</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">内核</span>
+            <span class="detail-value">{{status.sys.kernel}}</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">架构</span>
+            <span class="detail-value">{{status.sys.arch}}</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">运行时间</span>
+            <span class="detail-value">{{status.sys.runtime}}</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">时区</span>
+            <span class="detail-value">{{status.sys.timezone}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>

@@ -18,7 +18,7 @@ export async function getCPUInfo () {
     /** 线程数 */
     threads: cpu.cores,
     /** 基础频率 */
-    baseSpeed: formatGHz(cpu.speed || 0),
+    speed: formatGHz(cpu.speed || cpu.speedMax || 0),
     /** 最大睿频 */
     maxSpeed: formatGHz(cpu.speedMax || 0),
     /** L3缓存信息 */

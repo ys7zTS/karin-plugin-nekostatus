@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>简易状态</title>
+  <link rel="stylesheet" href="{{pluResPath}}/status/simple.css">
+</head>
+
+<body>
+  <div class="container">
+    <!-- Bot Info Section -->
+    <div class="bot-section">
+      {{each status.bots v index}}
+      {{if index === 0}}
+      <div class="bot-card">
+        <div class="bot-avatar-container">
+          <img src="{{v.bot.avatar}}" class="bot-avatar" alt="Avatar">
+        </div>
+        <div class="bot-details">
+          <div class="bot-header">
+            <div class="bot-name">{{v.bot.nickname}}</div>
+            <div class="bot-badges">
+              <span class="badge">{{v.adapter.platform}}</span>
+              <span class="badge pink">{{v.adapter.name}}</span>
+            </div>
+          </div>
+          <div class="bot-stats">
+            <div class="stat-item">
+              <span class="stat-label">好友</span>
+              <span class="stat-value">{{v.bot.friends}}</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">群聊</span>
+              <span class="stat-value">{{v.bot.groups}}</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">接收</span>
+              <span class="stat-value">{{v.bot.receive}}</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">发送</span>
+              <span class="stat-value">{{v.bot.send}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{/if}}
+      {{/each}}
+    </div>
+
+    <!-- Gauges Section -->
+    <div class="gauges-section">
+      <!-- CPU -->
+      <div class="gauge-card">
+        <div class="gauge-title">CPU</div>
+        <div class="progress-circle" style="--percent: {{status.cpu.totalLoad}}">
+          <div class="progress-value">{{status.cpu.totalLoad}}%</div>
+        </div>
+        <div class="gauge-detail">{{status.cpu.brand}}</div>
+      </div>
+
+      <!-- Memory -->
+      <div class="gauge-card">
+        <div class="gauge-title">内存</div>
+        <div class="progress-circle" style="--percent: {{status.mem.mem.usage}}">
+          <div class="progress-value">{{status.mem.mem.usage}}%</div>
+        </div>
+        <div class="gauge-detail">{{status.mem.mem.used}} / {{status.mem.mem.total}}</div>
+      </div>
+
+      <!-- Swap -->
+      <div class="gauge-card">
+        <div class="gauge-title">交换</div>
+        <div class="progress-circle" style="--percent: {{status.mem.swap.usage}}">
+          <div class="progress-value">{{status.mem.swap.usage}}%</div>
+        </div>
+        <div class="gauge-detail">{{status.mem.swap.used}} / {{status.mem.swap.total}}</div>
+      </div>
+    </div>
+
+    <!-- System Info Section -->
+    <div class="system-info-section">
+      <div class="info-item">
+        <span class="info-label">主机名</span>
+        <span class="info-value">{{status.sys.hostname}}</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">操作系统</span>
+        <span class="info-value">{{status.sys.system}}</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">运行时间</span>
+        <span class="info-value">{{status.sys.runtime}}</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Node版本</span>
+        <span class="info-value">{{status.sys.node_version}}</span>
+      </div>
+    </div>
+
+    <div class="footer">
+      {{sys.copyright}}
+    </div>
+  </div>
+</body>
+
+</html>

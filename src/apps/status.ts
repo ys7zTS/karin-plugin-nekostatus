@@ -1,10 +1,10 @@
-import { getBotInfo, getCPUInfo, getMemoryInfo, getNetworkInfo, getStorageInfo, getSystemInfo } from '@/modules'
+import { getBotInfo, getCPUInfo, getMemoryInfo, getNetworkInfo, getProcessInfo, getStorageInfo, getSystemInfo } from '@/modules'
 import { Cfg, render } from '@/utils'
 import karin, { config, getPlugins, uptime } from 'node-karin'
 
 const escapeRegex = (str: string) => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 const reg = Cfg.config.prefix.map(escapeRegex).join('|')
-const regex = new RegExp(`^#?(${reg})?状态(all)?$`.trim(), 'i')
+const regex = new RegExp(`^#?(${reg})?状态(pro)?$`.trim(), 'i')
 export const status = karin.command(regex, async (ctx) => {
   const match = ctx.msg.match(regex)!
   const prefix = match[1]
@@ -27,9 +27,15 @@ export const status = karin.command(regex, async (ctx) => {
       time: uptime(),
       bots: karin.getBotCount()
     },
-    sys: await getSystemInfo(),
-    network: getNetworkInfo()
+    sys: {
+      ...(await getSystemInfo()),
+      node_version: process.version,
+      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
+    },
+    network: getNetworkInfo(),
+    process: await getProcessInfo()
   }
-  const img = await render('status/index', { status })
+  const template = isAll ? 'status/index' : 'status/simple'
+  const img = await render(template, { status })
   ctx.reply(img)
 })
