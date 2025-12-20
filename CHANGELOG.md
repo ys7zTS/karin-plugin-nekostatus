@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.4](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/v1.3.3...v1.3.4) (2025-12-20)
+
+
+### Bug Fixes
+
+* 1 ([3c370f0](https://github.com/ys7zTS/karin-plugin-nekostatus/commit/3c370f06972410f52e01ad8dd935a3d11e52dab0))
+
 ## [1.3.3](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/v1.3.2...v1.3.3) (2025-12-20)
 
 
