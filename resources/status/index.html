@@ -11,8 +11,9 @@
 <body>
   <div class="main-container">
     <!-- Column 1: Bot List -->
+    {{each status.botColumns column}}
     <div class="column bot-column">
-      {{each status.bots v}}
+      {{each column v}}
       <div class="bot-card-pro">
         <div class="bot-pro-header">
           <img src="{{v.bot.avatar}}" class="bot-pro-avatar">
@@ -45,6 +46,7 @@
       </div>
       {{/each}}
     </div>
+    {{/each}}
 
     <!-- Column 2: Core System Info -->
     <div class="column">
@@ -289,6 +291,7 @@
       </div>
     </div>
   </div>
+  <div class="footer">{{sys.copyright}}</div>
 </body>
 
 </html>

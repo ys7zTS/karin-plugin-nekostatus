@@ -10,8 +10,16 @@ export const status = karin.command(regex, async (ctx) => {
   const prefix = match[1]
   const isAll = !!match[2]
   if (!Cfg.config.defStatus && !prefix) return false
+  const bots = await getBotInfo(ctx.bot.selfId, isAll)
+  const botColumns: any[][] = []
+  for (let i = 0; i < bots.length; i += 8) {
+    botColumns.push(bots.slice(i, i + 8))
+  }
+  botColumns.reverse()
+
   const status = {
-    bots: await getBotInfo(ctx.bot.selfId, isAll),
+    bots,
+    botColumns,
     plugin: {
       all: (await getPlugins('all', false)).length,
       npm: (await getPlugins('npm', false)).length,
@@ -38,4 +46,4 @@ export const status = karin.command(regex, async (ctx) => {
   const template = isAll ? 'status/index' : 'status/simple'
   const img = await render(template, { status })
   ctx.reply(img)
-})
+}, { name: '状态', priority: -Infinity })

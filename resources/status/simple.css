@@ -22,6 +22,7 @@ body {
   background: var(--bg-gradient);
   color: var(--text-primary);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
@@ -59,7 +60,7 @@ body {
   border-radius: 50%;
   border: 3px solid var(--accent-blue);
   object-fit: cover;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .bot-details {
@@ -193,7 +194,7 @@ body {
   grid-template-columns: repeat(2, 1fr);
   gap: 15px;
   padding-top: 15px;
-  border-top: 1px solid rgba(0,0,0,0.05);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .info-item {
