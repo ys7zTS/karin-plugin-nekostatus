@@ -59,6 +59,7 @@ export async function getProcessInfo (limit = 10) {
     all: processes.all,
     running: processes.running,
     blocked: processes.blocked,
-    sleeping: processes.sleeping
+    sleeping: processes.sleeping,
+    unknown: processes.unknown ?? 0
   }
 }

@@ -177,17 +177,26 @@
         <div class="card-title">
           <span class="card-icon icon-blue">🌐</span> 网络信息
         </div>
-        <div class="network-grid">
-          <div class="net-item">
-            <div class="net-label">上传</div>
-            <div class="net-value">{{status.network.up}}</div>
-            <div class="net-total">总: {{status.network.upTotal}}</div>
+        <div class="network-list">
+          {{each status.network v}}
+          <div class="net-interface">
+            <div class="net-header">
+              <span class="net-name">{{v.name}}</span>
+            </div>
+            <div class="net-stats-row">
+              <div class="net-stat-group">
+                <span class="net-icon up">↑</span>
+                <span class="net-val">{{v.upload}}</span>
+                <span class="net-tot">{{v.totalUpload}}</span>
+              </div>
+              <div class="net-stat-group">
+                <span class="net-icon down">↓</span>
+                <span class="net-val">{{v.download}}</span>
+                <span class="net-tot">{{v.totalDownload}}</span>
+              </div>
+            </div>
           </div>
-          <div class="net-item">
-            <div class="net-label">下载</div>
-            <div class="net-value">{{status.network.down}}</div>
-            <div class="net-total">总: {{status.network.downTotal}}</div>
-          </div>
+          {{/each}}
         </div>
       </div>
 
@@ -200,7 +209,7 @@
           {{each status.disk v}}
           <div class="disk-item">
             <div class="disk-header">
-              <span class="disk-name">{{v.name}}</span>
+              <span class="disk-name">{{v.mount}}({{v.type}})</span>
               <span class="disk-usage">{{v.use}}%</span>
             </div>
             <div class="disk-bar-container">
@@ -222,6 +231,7 @@
           <span class="p-tag run">运行: {{status.process.running}}</span>
           <span class="p-tag sleep">休眠: {{status.process.sleeping}}</span>
           <span class="p-tag block">阻塞: {{status.process.blocked}}</span>
+          <span class="p-tag unknown">未知: {{status.process.unknown}}</span>
         </div>
         <table class="process-table">
           <thead>

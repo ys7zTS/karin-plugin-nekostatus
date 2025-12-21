@@ -428,35 +428,65 @@ body {
 }
 
 /* Network */
-.network-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
+.network-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.net-item {
+.net-interface {
   background: rgba(255, 255, 255, 0.5);
-  padding: 15px;
+  padding: 10px;
   border-radius: 12px;
-  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.net-label {
+.net-header {
+  margin-bottom: 8px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding-bottom: 4px;
+}
+
+.net-name {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.net-stats-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.net-stat-group {
+  display: flex;
+  align-items: center;
+  gap: 4px;
   font-size: 0.85rem;
-  color: var(--text-secondary);
-  margin-bottom: 5px;
 }
 
-.net-value {
-  font-size: 1.1rem;
-  font-weight: 800;
-  margin: 5px 0;
+.net-icon {
+  font-weight: bold;
+}
+
+.net-icon.up {
+  color: #2196f3;
+}
+
+.net-icon.down {
+  color: #4caf50;
+}
+
+.net-val {
+  font-weight: 600;
   color: #333;
 }
 
-.net-total {
+.net-tot {
   font-size: 0.75rem;
   color: var(--text-secondary);
+  margin-left: 2px;
 }
 
 /* Process Table */
@@ -488,6 +518,11 @@ body {
 .p-tag.block {
   background: rgba(255, 182, 193, 0.3);
   color: #8b0000;
+}
+
+.p-tag.unknown {
+  background: rgba(220, 220, 220, 0.5);
+  color: #666;
 }
 
 .process-table {
