@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.5](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/v1.3.4...v1.3.5) (2025-12-21)
+
+
+### Bug Fixes
+
+* 修复硬盘名丢失，修复网络信息显示异常 ([c51118c](https://github.com/ys7zTS/karin-plugin-nekostatus/commit/c51118c5c78a0f650e3332e59238e7918e2e6a35))
+
 ## [1.3.4](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/v1.3.3...v1.3.4) (2025-12-20)
 
 
