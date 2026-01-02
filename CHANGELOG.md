@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.7](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/v1.3.6...v1.3.7) (2026-01-02)
+
+
+### Bug Fixes
+
+* 修复应用插件统计错误的问题 ([b22b2ba](https://github.com/ys7zTS/karin-plugin-nekostatus/commit/b22b2baade7fe10789143db0981e1a7875a8c5da))
+
 ## [1.3.6](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/v1.3.5...v1.3.6) (2025-12-21)
 
 
