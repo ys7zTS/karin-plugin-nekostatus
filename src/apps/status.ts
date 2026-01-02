@@ -17,14 +17,16 @@ export const status = karin.command(regex, async (ctx) => {
   }
   botColumns.reverse()
 
+  const app = (await getPlugins('app', true))[0].apps.length
   const status = {
     bots,
     botColumns,
     plugin: {
-      all: (await getPlugins('all', false)).length,
+      /** 全部插件数量减去karin-plugin-example文件 */
+      all: (await getPlugins('all', false)).length - 1 + app,
       npm: (await getPlugins('npm', false)).length,
       git: (await getPlugins('git', false)).length,
-      js: (await getPlugins('app', false)).length
+      app
     },
     cpu: await getCPUInfo(),
     mem: await getMemoryInfo(),
