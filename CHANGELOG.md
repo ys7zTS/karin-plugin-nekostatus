@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.6](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/v1.3.5...v1.3.6) (2025-12-21)
+
+
+### Bug Fixes
+
+* 优化样式，优化多Bot情况 ([df1e5ff](https://github.com/ys7zTS/karin-plugin-nekostatus/commit/df1e5ffcebbcffa25c533c97ec4072042f1ea9ba))
+
 ## [1.3.5](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/v1.3.4...v1.3.5) (2025-12-21)
 
 
