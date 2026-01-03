@@ -34,6 +34,8 @@
   },
   "karin": {
     "main": "src/index.ts",
+    "web": "lib/web.config.js",
+    "ts-web": "src/web.config.ts",
     "apps": [
       "lib/apps"
     ],

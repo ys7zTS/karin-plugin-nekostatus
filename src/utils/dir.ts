@@ -2,12 +2,12 @@ import path from 'node:path'
 import fs from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { karinPathBase } from 'node-karin'
+import pkg from '../../package.json'
 
 let filePath = path.resolve(fileURLToPath(import.meta.url).replace(/\\/g, '/'), '../../..')
 if (!fs.existsSync(path.join(filePath, 'package.json'))) {
   filePath = path.resolve(fileURLToPath(import.meta.url).replace(/\\/g, '/'), '../..')
 }
-const pkg = JSON.parse(fs.readFileSync(path.join(filePath, 'package.json'), 'utf-8'))
 
 export const dir = {
   /** 插件名 */
@@ -16,6 +16,8 @@ export const dir = {
   version: pkg.version,
   /** 插件绝对路径 */
   pluginPath: filePath,
+  /** 插件 package.json 内容 */
+  pkg,
   /** 配置文件路径 */
   get ConfigDir () {
     return path.join(karinPathBase, this.name, 'config')
