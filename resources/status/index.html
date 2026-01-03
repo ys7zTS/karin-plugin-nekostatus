@@ -240,8 +240,8 @@
             <tr>
               <th>名称</th>
               <th>PID</th>
-              <th>CPU</th>
-              <th>Mem</th>
+              <th>CPU{{if status.process.sort === 'cpu'}} ▼{{/if}}</th>
+              <th>Mem{{if status.process.sort === 'mem'}} ▼{{/if}}</th>
             </tr>
           </thead>
           <tbody>

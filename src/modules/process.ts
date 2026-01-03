@@ -1,11 +1,14 @@
 import si from 'systeminformation'
 
+export type ProcessSortType = 'cpu' | 'mem'
+
 /**
  * 获取进程信息
  * @param limit 返回的进程数量，默认10
+ * @param sort 排序方式：按 CPU 或内存占用排序
  * @returns
  */
-export async function getProcessInfo (limit = 10) {
+export async function getProcessInfo (limit = 10, sort: ProcessSortType = 'cpu') {
   const processes = await si.processes()
 
   // 过滤系统空闲进程和系统进程
@@ -44,7 +47,10 @@ export async function getProcessInfo (limit = 10) {
   }
 
   const list = Array.from(grouped.values())
-    .sort((a, b) => b.cpu - a.cpu)
+    .sort((a, b) => {
+      if (sort === 'mem') return b.mem - a.mem
+      return b.cpu - a.cpu
+    })
     .slice(0, limit)
     .map(p => ({
       name: p.count > 1 ? `${p.name}(${p.count})` : p.name,
@@ -56,6 +62,7 @@ export async function getProcessInfo (limit = 10) {
 
   return {
     list,
+    sort,
     all: processes.all,
     running: processes.running,
     blocked: processes.blocked,

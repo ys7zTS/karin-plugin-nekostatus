@@ -13,11 +13,14 @@ export interface ConfigType {
   defStatus: boolean
   /** 自定义前缀 */
   prefix: string[]
+  /** 进程排序方式：mem 或 cpu */
+  processSort: 'mem' | 'cpu'
 }
 class Config {
   defConfig: ConfigType = {
     defStatus: false,
     prefix: ['猫猫', 'neko'],
+    processSort: 'mem',
   }
 
   CfgPath = path.join(dir.ConfigDir, 'config.json')
