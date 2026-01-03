@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.4.0](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/v1.3.7...v1.4.0) (2026-01-03)
+
+
+### Features
+
+* 新增web配置 ([0675067](https://github.com/ys7zTS/karin-plugin-nekostatus/commit/0675067814c5c81f120c06405b63f13b7e79f9b2))
+* 新增指令更新 ([992dc04](https://github.com/ys7zTS/karin-plugin-nekostatus/commit/992dc049ca9ac2e1f610b74112d72c20f3af89a0))
+
+
+### Bug Fixes
+
+* 优化 ([1980b24](https://github.com/ys7zTS/karin-plugin-nekostatus/commit/1980b2442584f6c0842b9050ae412194a6468d19))
+* 优化获取数据逻辑 ([cb2b7fd](https://github.com/ys7zTS/karin-plugin-nekostatus/commit/cb2b7fdca06a5d0453d75e41ea1d0ae513e965be))
+
 ## [1.3.7](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/v1.3.6...v1.3.7) (2026-01-02)
 
 
