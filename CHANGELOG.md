@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/v1.4.0...v1.4.1) (2026-03-22)
+
+
+### Bug Fixes
+
+* 新增适配器版本显示 close [#19](https://github.com/ys7zTS/karin-plugin-nekostatus/issues/19) ([55c0c1b](https://github.com/ys7zTS/karin-plugin-nekostatus/commit/55c0c1be398ffd0cce68cf93808e47dba5d6a082))
+
 ## [1.4.0](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/v1.3.7...v1.4.0) (2026-01-03)
 
 
