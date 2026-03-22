@@ -158,6 +158,10 @@ body {
   background: var(--accent-pink);
 }
 
+.badge.green {
+  background: var(--accent-green);
+}
+
 .bot-pro-stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

@@ -7,6 +7,7 @@
   --accent-blue: #87cefa;
   --accent-pink: #ffb6c1;
   --accent-cyan: #e0ffff;
+  --accent-green: #98fb98;
   --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
   --radius: 16px;
 }
@@ -99,6 +100,10 @@ body {
 
 .badge.pink {
   background: var(--accent-pink);
+}
+
+.badge.green {
+  background: var(--accent-green);
 }
 
 .bot-stats {
