@@ -29,6 +29,7 @@ export const render = async (
       waitUntil: 'networkidle0',
     },
     setViewport: {
+      width: 2000,
       deviceScaleFactor: 3
     }
   })

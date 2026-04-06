@@ -1,4 +1,5 @@
 import si from 'systeminformation'
+import { format } from '@/utils/common'
 
 export type ProcessSortType = 'cpu' | 'mem'
 
@@ -29,17 +30,18 @@ export async function getProcessInfo (limit = 10, sort: ProcessSortType = 'cpu')
 
   for (const p of filtered) {
     const name = p.name
+    const rssBytes = (p.memRss || 0) * 1024
     if (grouped.has(name)) {
       const item = grouped.get(name)!
       item.cpu += p.cpu
-      item.mem += p.mem
+      item.mem += rssBytes
       item.count += 1
     } else {
       grouped.set(name, {
         name,
         pid: p.pid,
         cpu: p.cpu,
-        mem: p.mem,
+        mem: rssBytes,
         count: 1,
         user: p.user
       })
@@ -56,7 +58,7 @@ export async function getProcessInfo (limit = 10, sort: ProcessSortType = 'cpu')
       name: p.count > 1 ? `${p.name}(${p.count})` : p.name,
       pid: p.pid, // 显示主进程PID
       cpu: p.cpu.toFixed(1),
-      mem: p.mem.toFixed(1),
+      mem: format(p.mem, { decimals: 1 }),
       user: p.user
     }))
 

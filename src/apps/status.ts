@@ -40,9 +40,10 @@ export const status = karin.command(regex, async (ctx) => {
       botColumns.reverse()
 
       const app = (await getPlugins('app', true))[0]?.apps.length || 0
+      const allPlugins = await getPlugins('all', false)
       const plugin = {
         /** 全部插件数量减去karin-plugin-example文件夹 */
-        all: (await getPlugins('all', false)).length - 1 + app,
+        all: (allPlugins.includes('app:karin-plugin-example') ? allPlugins.length - 1 : allPlugins.length) + app,
         npm: (await getPlugins('npm', false)).length,
         git: (await getPlugins('git', false)).length,
         app

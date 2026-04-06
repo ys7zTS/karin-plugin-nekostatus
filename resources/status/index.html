@@ -218,7 +218,7 @@
             <div class="disk-bar-container">
               <div class="disk-bar" style="width: {{v.use}}%"></div>
             </div>
-            <div class="disk-details">{{v.used}} / {{v.size}}</div>
+            <div class="disk-details">已用 {{v.used}} · 可用 {{v.free}} · 总计 {{v.size}}</div>
           </div>
           {{/each}}
         </div>
@@ -251,7 +251,7 @@
               <td>{{v.name}}</td>
               <td>{{v.pid}}</td>
               <td>{{v.cpu}}%</td>
-              <td>{{v.mem}}%</td>
+              <td>{{v.mem}}</td>
             </tr>
             {{/each}}
           </tbody>

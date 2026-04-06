@@ -1,6 +1,7 @@
 node_modules/
 @karinjs/
 .env
+lib/
 development.env
 pnpm-workspace.yaml
 src/apps/test*
