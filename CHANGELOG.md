@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.2](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/v1.4.1...v1.4.2) (2026-04-06)
+
+
+### Bug Fixes
+
+* 优化样式 ([d5df077](https://github.com/ys7zTS/karin-plugin-nekostatus/commit/d5df0778511c766c10543b643894690ac33a3ef0))
+
 ## [1.4.1](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/v1.4.0...v1.4.1) (2026-03-22)
 
 
