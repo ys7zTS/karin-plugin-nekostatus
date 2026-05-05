@@ -80,7 +80,10 @@ export const status = karin.command(regex, async (ctx) => {
       sleeping: 0,
       blocked: 0
     },
-    processes: [],
+    processes: {
+      process: [],
+      sort: 'cpu'
+    },
     footerText: ''
   }
 
@@ -105,14 +108,7 @@ export const status = karin.command(regex, async (ctx) => {
       Promise.resolve(getNetworkInfo()),
       getProcessInfo(10, Cfg.config.processSort)
     ])
-    raw.diskInfo = disk.map(d => ({
-      mount: d.mount,
-      type: d.type,
-      size: d.size,
-      used: d.used,
-      free: d.free,
-      use: d.use
-    }))
+    raw.diskInfo = disk
 
     raw.networks = network.map(n => ({
       name: n.name,
@@ -133,12 +129,13 @@ export const status = karin.command(regex, async (ctx) => {
       blocked: process.blocked
     }
 
-    raw.processes = process.list.map(p => ({
+    raw.processes.process = process.list.map(p => ({
       name: p.name,
       pid: String(p.pid),
       cpu: p.cpu,
       memory: p.mem
     }))
+    raw.processes.sort = process.sort
   }
 
   const img = await render(raw)
