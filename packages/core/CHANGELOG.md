@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.4.5](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/core-v1.4.4...core-v1.4.5) (2026-05-05)
+
+
+### 🐛 错误修复
+
+* **core:** 接口适配ui ([7684710](https://github.com/ys7zTS/karin-plugin-nekostatus/commit/768471063d566dcd13e71ea9186b729277f92be9))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ys7zts/neko-template bumped to 1.4.5
+
 ## [1.4.4](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/core-v1.4.3...core-v1.4.4) (2026-05-05)
 
 
