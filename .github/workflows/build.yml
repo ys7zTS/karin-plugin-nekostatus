@@ -38,6 +38,7 @@ jobs:
           node-version: 24
           registry-url: "https://registry.npmjs.org"
 
+      - run: npm install npm@latest -g
       - run: pnpm install
 
       - run: pnpm run build
