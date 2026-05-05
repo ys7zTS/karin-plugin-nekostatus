@@ -1,4 +1,5 @@
 import si from 'systeminformation'
+import { execSync } from 'child_process'
 import { format } from '@/utils/common'
 
 export type ProcessSortType = 'cpu' | 'mem'
@@ -11,6 +12,37 @@ export type ProcessSortType = 'cpu' | 'mem'
  */
 export async function getProcessInfo (limit = 10, sort: ProcessSortType = 'cpu') {
   const processes = await si.processes()
+
+  // Windows: 用 PrivateWorkingSet 替换 WorkingSet，避免共享内存重复计算
+  if (process.platform === 'win32') {
+    try {
+      const psOutput = execSync(
+        'powershell -NoProfile -Command "Get-CimInstance Win32_PerfFormattedData_PerfProc_Process | Select-Object IDProcess,WorkingSetPrivate | ConvertTo-Json -Compress"',
+        { timeout: 15000, windowsHide: true }
+      ).toString().trim()
+
+      if (psOutput) {
+        const privateWsMap = new Map<number, number>()
+        const jsonStr = psOutput.replace(/^﻿/, '')
+        const procArray = JSON.parse(jsonStr)
+        for (const item of (Array.isArray(procArray) ? procArray : [procArray])) {
+          if (item.IDProcess && item.WorkingSetPrivate) {
+            // WorkingSetPrivate 单位是字节，转换为 KB
+            privateWsMap.set(item.IDProcess, Math.floor(item.WorkingSetPrivate / 1024))
+          }
+        }
+
+        for (const p of processes.list) {
+          const privateRss = privateWsMap.get(p.pid)
+          if (privateRss !== undefined) {
+            p.memRss = privateRss
+          }
+        }
+      }
+    } catch {
+      // 降级：使用 systeminformation 默认的 memRss（WorkingSet）
+    }
+  }
 
   // 过滤系统空闲进程和系统进程
   const filtered = processes.list.filter(p => {
@@ -30,7 +62,7 @@ export async function getProcessInfo (limit = 10, sort: ProcessSortType = 'cpu')
 
   for (const p of filtered) {
     const name = p.name
-    const rssBytes = (p.memRss || 0) * 1024
+    const rssBytes = p.memRss || 0
     if (grouped.has(name)) {
       const item = grouped.get(name)!
       item.cpu += p.cpu
@@ -58,7 +90,7 @@ export async function getProcessInfo (limit = 10, sort: ProcessSortType = 'cpu')
       name: p.count > 1 ? `${p.name}(${p.count})` : p.name,
       pid: p.pid, // 显示主进程PID
       cpu: p.cpu.toFixed(1),
-      mem: format(p.mem, { decimals: 1 }),
+      mem: format(p.mem, { from: 'KB', decimals: 1 }),
       user: p.user
     }))
 

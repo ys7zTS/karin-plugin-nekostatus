@@ -1,0 +1,90 @@
+import type { StatusData } from './types'
+
+export const defaultData: StatusData = {
+  karinVersion: 'Karin v1.2.5',
+  uptime: '14天 8小时 32分',
+  bots: [
+    {
+      name: '观测节点 Alpha',
+      role: 'Primary endpoint',
+      avatar: 'src/assets/image/logo.png',
+      platform: 'QQ',
+      adapter: 'NapCat',
+      adapterVersion: 'v3.1.0',
+      contacts: '342',
+      groups: '86',
+      sent: '1.2k',
+      received: '14.5k',
+    },
+    {
+      name: '观测节点 Beta',
+      role: 'Backup endpoint',
+      avatar: 'src/assets/image/logo.png',
+      platform: 'Telegram',
+      adapter: 'Telegraf',
+      adapterVersion: 'v4.14',
+      contacts: '12',
+      groups: '4',
+      sent: '350',
+      received: '1.1k',
+    },
+  ],
+  resources: [
+    { type: 'cpu', name: 'CPU 负载', desc: '8C / 16T · 2.50GHz', value: 34, display: '34', unit: '%' },
+    { type: 'ram', name: '物理内存', desc: '18.4 GB / 32.0 GB', value: 57.5, display: '57.5', unit: '%' },
+    { type: 'swap', name: '交换空间', desc: '1.2 GB / 8.0 GB', value: 15, display: '15', unit: '%' }
+  ],
+  diskInfo: [{
+    mount: 'C:',
+    type: 'SSD',
+    size: '1000GB',
+    used: '500GB',
+    free: '500GB',
+    use: '50',
+  },
+  {
+    mount: 'D:',
+    type: 'SSD',
+    size: '1000GB',
+    used: '300GB',
+    free: '700GB',
+    use: '75',
+  },
+  {
+    mount: 'E:',
+    type: 'SSD',
+    size: '1000GB',
+    used: '500GB',
+    free: '500GB',
+    use: '90',
+  }],
+  runtimeVersion: 'Node v20.11.0',
+  mountedBots: 2,
+  plugins: { total: 48, git: 12, npm: 24, app: 12 },
+  hostInfo: {
+    hostname: 'neko_home',
+    system: "Ubuntu 22.04.3 LTS",
+    arch: 'x64',
+    kernel: "5.15.0-76-generic",
+  },
+  networks: [
+    {
+      name: 'eth0',
+      upload: { speed: '2.4 MB/s', total: '124.5 GB' },
+      download: { speed: '14.1 MB/s', total: '812.2 GB' },
+    },
+    {
+      name: 'docker0',
+      upload: { speed: '12 KB/s', total: '1.2 GB' },
+      download: { speed: '30 KB/s', total: '3.4 GB' },
+    },
+  ],
+  processTags: { total: 145, running: 4, sleeping: 141, blocked: 0 },
+  processes: [
+    { name: 'node', pid: '24501', cpu: '12.4%', memory: '340 MB' },
+    { name: 'redis-server', pid: '1204', cpu: '4.1%', memory: '45 MB' },
+    { name: 'nginx', pid: '802', cpu: '0.5%', memory: '12 MB' },
+    { name: 'python3', pid: '2954', cpu: '0.1%', memory: '85 MB' },
+  ],
+  footerText: 'Designed for Karin Bot · UI preview',
+}

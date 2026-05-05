@@ -1,0 +1,5 @@
+@karinjs/
+.env
+lib/
+development.env
+src/apps/test*

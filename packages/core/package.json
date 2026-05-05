@@ -1,0 +1,65 @@
+{
+  "name": "@ys7zts/karin-plugin-nekostatus",
+  "version": "1.4.2",
+  "author": "瑜笙",
+  "type": "module",
+  "description": "基于Karin编写的服务器状态",
+  "homepage": "https://github.com/ys7zTS/karin-plugin-nekostatus",
+  "bugs": {
+    "url": "https://github.com/ys7zTS/karin-plugin-nekostatus/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ys7zTS/karin-plugin-nekostatus.git"
+  },
+  "scripts": {
+    "app": "node lib/app.js",
+    "build": "tsc --noEmit && tsdown",
+    "dev": "cross-env EBV_FILE=\"development.env\" node --import tsx src/app.ts",
+    "pub": "npm publish --access public"
+  },
+  "main": "lib/index.js",
+  "devDependencies": {
+    "@karinjs/plugin-puppeteer": "^2.3.1",
+    "@types/express": "^5.0.6",
+    "@types/react": "^19.2.14",
+    "cross-env": "^10.1.0",
+    "node-karin": "^1.15.5",
+    "@ys7zts/neko-template": "workspace:*"
+  },
+  "karin": {
+    "main": "src/index.ts",
+    "web": "lib/web.config.js",
+    "ts-web": "src/web.config.ts",
+    "apps": [
+      "lib/apps"
+    ],
+    "ts-apps": [
+      "src/apps"
+    ],
+    "static": [
+      "resources"
+    ],
+    "files": [
+      "config",
+      "temp"
+    ]
+  },
+  "files": [
+    "lib/",
+    "resources/",
+    "!lib/app.js",
+    "LICENSE",
+    "package.json",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "dependencies": {
+    "@puniyu/system-info": "^1.5.5",
+    "systeminformation": "^5.31.5"
+  }
+}

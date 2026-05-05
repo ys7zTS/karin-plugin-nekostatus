@@ -1,67 +1,25 @@
 {
-  "name": "@ys7zts/karin-plugin-nekostatus",
-  "version": "1.4.2",
-  "author": "瑜笙",
+  "name": "@ys7zts/plugin-neko",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "license": "MIT",
+  "author": "ys7zTS",
   "type": "module",
-  "description": "基于Karin编写的服务器状态",
-  "homepage": "https://github.com/ys7zTS/karin-plugin-nekostatus",
-  "bugs": {
-    "url": "https://github.com/ys7zTS/karin-plugin-nekostatus/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ys7zTS/karin-plugin-nekostatus.git"
-  },
+  "main": "",
   "scripts": {
-    "app": "node lib/app.js",
-    "build": "tsup",
-    "dev": "cross-env EBV_FILE=\"development.env\" node --import tsx src/app.ts",
-    "pub": "npm publish --access public"
+    "dev": "pnpm --filter @ys7zts/karin-plugin-nekostatus dev",
+    "app": "pnpm --filter @ys7zts/karin-plugin-nekostatus app",
+    "build": "pnpm -r run build",
+    "build:ui": "pnpm -F @ys7zts/neko-template build",
+    "dev:ui": "pnpm -F @ys7zts/neko-template dev"
   },
-  "main": "lib/index.js",
   "devDependencies": {
-    "@karinjs/plugin-puppeteer": "^1.1.2",
-    "@types/express": "^5.0.6",
-    "@types/lodash": "^4.17.21",
-    "@types/node": "^25.0.3",
-    "cross-env": "^10.1.0",
-    "eslint": "^9.39.2",
-    "neostandard": "^0.12.2",
-    "node-karin": "^1.14.0",
-    "tsup": "^8.5.1",
-    "tsx": "^4.21.0",
-    "typescript": "^5.9.3"
-  },
-  "karin": {
-    "main": "src/index.ts",
-    "web": "lib/web.config.js",
-    "ts-web": "src/web.config.ts",
-    "apps": [
-      "lib/apps"
-    ],
-    "ts-apps": [
-      "src/apps"
-    ],
-    "static": [
-      "resources"
-    ],
-    "files": [
-      "config"
-    ]
-  },
-  "files": [
-    "/lib/**/*.js",
-    "/lib/**/*.d.ts",
-    "/config/*.json",
-    "resources",
-    "!lib/app.js"
-  ],
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org"
-  },
-  "dependencies": {
-    "@puniyu/system-info": "^1.5.3",
-    "systeminformation": "^5.27.14"
+    "@types/lodash": "^4.17.24",
+    "@types/node": "24.12.2",
+    "tsc-alias": "1.8.13",
+    "tsdown": "^0.21.10",
+    "tsx": "^4.19.4",
+    "typescript": "^6.0.3"
   }
 }

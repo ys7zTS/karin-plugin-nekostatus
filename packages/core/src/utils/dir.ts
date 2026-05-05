@@ -22,4 +22,8 @@ export const dir = {
   get ConfigDir () {
     return path.join(karinPathBase, this.name, 'config')
   },
+  /** 临时文件路径 */
+  get TempDir () {
+    return path.join(karinPathBase, this.name, 'temp')
+  }
 }
