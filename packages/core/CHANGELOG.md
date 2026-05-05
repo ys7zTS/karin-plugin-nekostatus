@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.4.2](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/core-v1.4.1...core-v1.4.2) (2026-05-05)
+
+
+### 🐛 错误修复
+
+* 重构ui样式，优化接口 ([06d33ce](https://github.com/ys7zTS/karin-plugin-nekostatus/commit/06d33ce33f5f429317fc5d84a493b1975f6c18c1))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ys7zts/neko-template bumped to 1.4.2
+
 ## [1.4.2](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/v1.4.1...v1.4.2) (2026-04-06)
 
 

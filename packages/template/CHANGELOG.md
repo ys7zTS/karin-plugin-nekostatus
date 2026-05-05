@@ -1,0 +1,8 @@
+# Changelog
+
+## [1.4.2](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/template-v1.0.0...template-v1.4.2) (2026-05-05)
+
+
+### 🐛 错误修复
+
+* 重构ui样式，优化接口 ([06d33ce](https://github.com/ys7zTS/karin-plugin-nekostatus/commit/06d33ce33f5f429317fc5d84a493b1975f6c18c1))
