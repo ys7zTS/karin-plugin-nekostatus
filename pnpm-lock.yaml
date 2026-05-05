@@ -37,10 +37,10 @@ importers:
         version: 5.31.5
     devDependencies:
       '@karinjs/plugin-puppeteer':
-        specifier: ^2.3.1
+        specifier: 2.3.1
         version: 2.3.1
       '@types/express':
-        specifier: ^5.0.6
+        specifier: 5.0.6
         version: 5.0.6
       '@types/react':
         specifier: ^19.2.14
