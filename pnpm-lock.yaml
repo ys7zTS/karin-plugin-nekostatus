@@ -43,16 +43,16 @@ importers:
         specifier: 5.0.6
         version: 5.0.6
       '@types/react':
-        specifier: ^19.2.14
+        specifier: 19.2.14
         version: 19.2.14
       '@ys7zts/neko-template':
         specifier: workspace:*
         version: link:../template
       cross-env:
-        specifier: ^10.1.0
+        specifier: 10.1.0
         version: 10.1.0
       node-karin:
-        specifier: ^1.15.5
+        specifier: 1.15.5
         version: 1.15.5
 
   packages/template:
