@@ -12,7 +12,7 @@ export interface BotData {
 }
 
 export interface ResourceData {
-  type: 'cpu' | 'ram' | 'swap' | 'disk'
+  type: 'cpu' | 'ram' | 'swap'
   name: string
   desc: string
   value: number
@@ -65,11 +65,16 @@ export interface NetworkData {
   download: NetworkMetricData
 }
 
-export interface ProcessData {
+export interface ProcessesData {
   name: string
   pid: string
   cpu: string
   memory: string
+}
+
+export interface ProcessData {
+  process: ProcessesData[]
+  sort: 'cpu' | 'mem'
 }
 
 export interface ProcessTagsData {
@@ -91,6 +96,6 @@ export interface StatusData {
   diskInfo: DiskInfoData[]
   networks: NetworkData[]
   processTags: ProcessTagsData
-  processes: ProcessData[]
+  processes: ProcessData
   footerText: string
 }

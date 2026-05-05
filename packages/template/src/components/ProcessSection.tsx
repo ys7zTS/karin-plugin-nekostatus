@@ -2,7 +2,7 @@ import type { ProcessData, ProcessTagsData } from '../types'
 
 interface ProcessSectionProps {
   processTags: ProcessTagsData
-  processes: ProcessData[]
+  processes: ProcessData
 }
 
 export default function ProcessSection ({ processTags, processes }: ProcessSectionProps) {
@@ -22,10 +22,14 @@ export default function ProcessSection ({ processTags, processes }: ProcessSecti
         <div className="process-row header">
           <span className="process-name">名称</span>
           <span>PID</span>
-          <span>CPU</span>
-          <span>内存占用</span>
+          <span>CPU
+            {processes.sort === 'cpu' && <span> ↓</span>}
+          </span>
+          <span>内存占用
+            {processes.sort === 'mem' && <span> ↓</span>}
+          </span>
         </div>
-        {processes.map((proc, i) => (
+        {processes.process.map((proc, i) => (
           <div key={i} className="process-row">
             <span className="process-name">{proc.name}</span>
             <span>{proc.pid}</span>

@@ -19,7 +19,7 @@ export default function Hero ({ data }: HeroProps) {
             系统在线
           </div>
         </div>
-        <div className="hero-subtitle num-font">{data.karinVersion} · 运行 {data.uptime}</div>
+        <div className="hero-subtitle num-font">Karin v{data.karinVersion} · 运行 {data.uptime}</div>
       </div>
       <div className="hero-right">
         <img className="hero-portrait" src={KarinLogo} alt="Karin" />

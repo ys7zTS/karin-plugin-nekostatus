@@ -476,6 +476,9 @@
       color: var(--accent);
       font-size: 1.02rem;
       font-weight: 900;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
 
     .resource-desc {

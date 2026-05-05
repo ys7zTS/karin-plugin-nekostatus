@@ -24,7 +24,7 @@ export default function App ({ data }: AppProps) {
         <AppFramework data={data} />
         {data.hostInfo && <HostInfo {...data.hostInfo} />}
         {+data.networks?.length > 0 && <NetworkSection networks={data.networks} />}
-        {+data.processes?.length > 0 && <ProcessSection processTags={data.processTags} processes={data.processes} />}
+        {+data.processes?.process?.length > 0 && <ProcessSection processTags={data.processTags} processes={data.processes} />}
         <Footer text={data.footerText} />
       </div>
     </main>

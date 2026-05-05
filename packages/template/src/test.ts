@@ -1,7 +1,7 @@
 import type { StatusData } from './types'
 
 export const defaultData: StatusData = {
-  karinVersion: 'Karin v1.2.5',
+  karinVersion: '1.2.5',
   uptime: '14天 8小时 32分',
   bots: [
     {
@@ -35,7 +35,7 @@ export const defaultData: StatusData = {
     { type: 'swap', name: '交换空间', desc: '1.2 GB / 8.0 GB', value: 15, display: '15', unit: '%' }
   ],
   diskInfo: [{
-    mount: 'C:',
+    mount: '/sys/firmware/efi/efivars',
     type: 'SSD',
     size: '1000GB',
     used: '500GB',
@@ -80,11 +80,14 @@ export const defaultData: StatusData = {
     },
   ],
   processTags: { total: 145, running: 4, sleeping: 141, blocked: 0 },
-  processes: [
-    { name: 'node', pid: '24501', cpu: '12.4%', memory: '340 MB' },
-    { name: 'redis-server', pid: '1204', cpu: '4.1%', memory: '45 MB' },
-    { name: 'nginx', pid: '802', cpu: '0.5%', memory: '12 MB' },
-    { name: 'python3', pid: '2954', cpu: '0.1%', memory: '85 MB' },
-  ],
+  processes: {
+    process: [
+      { name: 'node', pid: '24501', cpu: '12.4%', memory: '340 MB' },
+      { name: 'redis-server', pid: '1204', cpu: '4.1%', memory: '45 MB' },
+      { name: 'nginx', pid: '802', cpu: '0.5%', memory: '12 MB' },
+      { name: 'python3', pid: '2954', cpu: '0.1%', memory: '85 MB' },
+    ],
+    sort: 'mem'
+  },
   footerText: 'Designed for Karin Bot · UI preview',
 }
