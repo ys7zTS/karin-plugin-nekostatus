@@ -22,6 +22,8 @@ async function BotInfo (Id: string) {
     bot: {
       /** 昵称 */
       nickname: bot?.account.name || bot?.account.selfId || `Bot ${Id}`,
+      /** BotId */
+      id: Id,
       /** 头像 */
       avatar: bot?.account.avatar || 'https://p.qlogo.cn/gh/967068507/967068507/0',
       /** 好友数量 */

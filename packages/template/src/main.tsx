@@ -4,7 +4,7 @@ import { renderToString } from 'react-dom/server'
 import App from './App'
 
 export const render = (data: StatusData) => {
-  const res = renderToString(<App data={data} />)
+  const res = renderToString(<App {...data} />)
   const html = `<!DOCTYPE html>
 <html lang="zh-CN">
 

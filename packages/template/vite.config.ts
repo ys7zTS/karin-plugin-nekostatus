@@ -1,10 +1,11 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'node:path'
+import tailwindcss from '@tailwindcss/vite'
 import { builtinModules } from 'node:module'
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),  // 将 @ 映射到 src 目录
@@ -28,3 +29,4 @@ export default defineConfig({
     }
   }
 })
+

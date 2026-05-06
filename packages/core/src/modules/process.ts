@@ -40,7 +40,6 @@ export async function getProcessInfo (limit = 10, sort: ProcessSortType = 'cpu')
         }
       }
     } catch {
-      // 降级：使用 systeminformation 默认的 memRss（WorkingSet）
     }
   }
 

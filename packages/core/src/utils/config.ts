@@ -1,3 +1,4 @@
+import { updateRegex } from '@/apps/status'
 import { dir } from '@/utils/dir'
 import {
   logger,
@@ -49,6 +50,7 @@ class Config {
         timer = setTimeout(() => {
           this.cache = null
           logger.info('[猫猫状态] 检测到配置文件变化，已刷新缓存')
+          updateRegex()
         }, 300)
       })
     } catch (err) {

@@ -1,33 +1,123 @@
-export interface BotData {
-  name: string
-  role: string
+export interface BotInfo {
+  /** BotId */
+  id: string
+  /**名称 */
+  nickname: string
+  /** 头像URL */
   avatar: string
+  /** 平台 */
   platform: string
+  /** 适配器名称 */
   adapter: string
+  /** 适配器版本 */
   adapterVersion: string
-  contacts: string
-  groups: string
-  sent: string
-  received: string
+  /** 发送 */
+  sent: number
+  /** 接收 */
+  received: number
+  /** 好友 */
+  friends: number
+  /** 群组 */
+  groups: number
 }
 
-export interface ResourceData {
-  type: 'cpu' | 'ram' | 'swap'
+/** 框架信息 */
+export interface FrameworkInfo {
+  /** 框架名称 */
   name: string
-  desc: string
-  value: number
-  display: string
-  unit: string
+  /** 框架版本 */
+  version: string
+  /** 框架运行时间 */
+  uptime: string
+  /** 插件数量 */
+  plugins: {
+    /** 总 */
+    total: number
+    /** NPM插件 */
+    npm: number
+    /** Git插件 */
+    git: number
+    /** 应用插件 */
+    app: number
+  },
 }
 
-export interface PluginData {
+/** CPU信息 */
+export interface CPUInfo {
+  /** 型号 */
+  model: string
+  /** 核心数 */
+  cores: number
+  /** 频率 */
+  frequency: string
+  /** 使用率 */
+  usage: number
+  /** 线程数 */
+  threads: number
+}
+
+interface MemInfo {
+  /** 已用 */
+  used: number
+  /** 总计 */
   total: number
-  git: number
-  npm: number
-  app: number
+  /** 空闲 */
+  free: number
+  /** 使用率 */
+  usage: number
+}
+/** 内存信息 */
+export interface MemoryInfo {
+  /** 内存 */
+  ram: MemInfo
+  /** 内存交换 */
+  swap: MemInfo
 }
 
-export interface HostInfoData {
+/** 网络信息 */
+export interface NetfaceInfo {
+  /** 接口名称 */
+  name: string
+  /** 上行速度 */
+  upSpeed: number
+  /** 下行速度 */
+  downSpeed: number
+  /** 累计上传 */
+  totalUp: number
+  /** 累计下载 */
+  totalDown: number
+}
+
+/** 进程信息 */
+export interface ProcessesInfo {
+  /** 进程名称 */
+  name: string
+  /** 进程PID */
+  pid: number
+  /** CPU使用率 */
+  cpu: number
+  /** 内存使用量 */
+  mem: number
+}
+
+export interface ProcInfo {
+  /** 进程列表 */
+  procs: ProcessesInfo[],
+  /** 排序方式 */
+  sort: 'cpu' | 'mem'
+  /** 进程数量 */
+  all: number
+  /** 运行中 */
+  running: number
+  /** 被阻塞 */
+  blocked: number
+  /** 睡眠 */
+  sleeping: number
+  /** 未知 */
+  unknown: number
+}
+
+export interface HostInfo {
   /** 主机名 */
   hostname: string
   /** 操作系统 */
@@ -36,66 +126,27 @@ export interface HostInfoData {
   arch: string
   /** 内核版本 */
   kernel: string
-}
-
-/** 磁盘信息 */
-export interface DiskInfoData {
-  /** 磁盘盘符 */
-  mount: string,
-  /** 磁盘类型 */
-  type: string,
-  /** 总空间 */
-  size: string,
-  /** 已使用 */
-  used: string,
-  /** 剩余 */
-  free: string,
-  /** 使用百分比 */
-  use: string,
-}
-
-export interface NetworkMetricData {
-  speed: string
-  total: string
-}
-
-export interface NetworkData {
-  name: string
-  upload: NetworkMetricData
-  download: NetworkMetricData
-}
-
-export interface ProcessesData {
-  name: string
-  pid: string
-  cpu: string
-  memory: string
-}
-
-export interface ProcessData {
-  process: ProcessesData[]
-  sort: 'cpu' | 'mem'
-}
-
-export interface ProcessTagsData {
-  total: number
-  running: number
-  sleeping: number
-  blocked: number
+  /** 系统运行时间 */
+  uptime: string
+  /** 时区 */
+  timezone: string
 }
 
 export interface StatusData {
-  karinVersion: string
-  uptime: string
-  bots: BotData[]
-  resources: ResourceData[]
-  runtimeVersion: string
-  mountedBots: number
-  plugins: PluginData
-  hostInfo: HostInfoData
-  diskInfo: DiskInfoData[]
-  networks: NetworkData[]
-  processTags: ProcessTagsData
-  processes: ProcessData
-  footerText: string
+  /** 框架信息 */
+  framework: FrameworkInfo
+  /** 机器人列表 */
+  bots: BotInfo[]
+  /** CPU信息 */
+  cpu: CPUInfo
+  /** 内存信息 */
+  mem: MemoryInfo
+  /** 网络信息 */
+  networks: NetfaceInfo[]
+  /** 进程信息 */
+  proc: ProcInfo
+  /** 主机信息 */
+  hostInfo: HostInfo
+  /** 页脚 */
+  footer: string
 }

@@ -1,15 +1,11 @@
-import { createRoot } from 'react-dom/client'
-import type { StatusData } from './types'
+import React from 'react'
+import ReactDOM from 'react-dom/client'
 import App from './App'
-import { defaultData } from './test'
+import { TestData } from '@/test'
 import './styles/style.css'
 
-declare global {
-  interface Window {
-    __DATA__?: StatusData
-  }
-}
-
-createRoot(document.getElementById('root')!).render(
-  <App data={window.__DATA__ ?? defaultData} />
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <App {...TestData} />
+  </React.StrictMode>
 )

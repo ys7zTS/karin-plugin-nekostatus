@@ -1,51 +1,37 @@
-name: Release
+name: Build Artifact
 
 on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:
-
-permissions:
-  contents: write
-  pull-requests: write
-  id-token: write
+  workflow_call:
+    inputs:
+      version:
+        type: string
+        required: false
 
 jobs:
-  release-please:
-    runs-on: ubuntu-latest
-    outputs:
-      core-released: ${{ steps.release.outputs['packages/core--release_created'] }}
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: googleapis/release-please-action@v4
-        id: release
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-  publish-core:
-    needs: release-please
-    if: ${{ needs.release-please.outputs.core-released == 'true' }}
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - uses: pnpm/action-setup@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version: 24
-          registry-url: "https://registry.npmjs.org"
 
-      - run: npm install npm@latest -g
-      - run: pnpm install
-
-      - run: pnpm run build
-
-      - run: npm pkg delete devDependencies
-
-      - name: 发布 core 到 npm
+      - name: 安装依赖并构建
         run: |
-          cd packages/core
-          npm publish --provenance --access public
+          pnpm install
+          pnpm run build
+          mkdir -p ${{ runner.temp }}/temp/plugin
+          cp -r README.md LICENSE ${{ runner.temp }}/temp/plugin
+
+      - name: 删除开发依赖并移动构建产物
+        run: |
+          npm pkg delete devDependencies
+          cp -r package.json lib CHANGELOG.md ${{ runner.temp }}/temp/plugin
+        working-directory: packages/core
+      - name: 上传编译产物到artifact
+        id: upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: core-build
+          path: ${{ runner.temp }}/temp/plugin

@@ -1,0 +1,65 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  packages: write
+  pull-requests: write
+  id-token: write
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    outputs:
+      core-released: ${{ steps.release.outputs['packages/core--release_created'] }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: googleapis/release-please-action@v4
+        id: release
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+  build:
+    needs: release-please
+    if: needs.release-please.outputs.core-released == 'true'
+    uses: ./.github/workflows/build.yml
+
+  publish-core-github:
+    needs: [ release-please, build ]
+    if: ${{ needs.release-please.outputs.core-released == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: 导入构建产物
+        uses: actions/download-artifact@v4
+        with:
+          name: core-build
+          path: .
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          registry-url: "https://npm.pkg.github.com"
+      - run: npm install npm@latest -g
+      - name: 发布 core 到 GitHub Packages
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  publish-core-npm:
+    needs: [ release-please, build ]
+    if: ${{ needs.release-please.outputs.core-released == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          registry-url: "https://registry.npmjs.org"
+
+      - run: npm install npm@latest -g
+      - name: 发布 core 到 npm
+        run: npm publish --access public

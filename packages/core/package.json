@@ -54,10 +54,6 @@
     "README.md",
     "CHANGELOG.md"
   ],
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org"
-  },
   "dependencies": {
     "@puniyu/system-info": "^1.5.5",
     "systeminformation": "^5.31.5"
