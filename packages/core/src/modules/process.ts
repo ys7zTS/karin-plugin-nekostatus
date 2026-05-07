@@ -1,6 +1,5 @@
 import si from 'systeminformation'
 import { execSync } from 'child_process'
-import { format } from '@/utils/common'
 
 export type ProcessSortType = 'cpu' | 'mem'
 
@@ -88,8 +87,8 @@ export async function getProcessInfo (limit = 10, sort: ProcessSortType = 'cpu')
     .map(p => ({
       name: p.count > 1 ? `${p.name}(${p.count})` : p.name,
       pid: p.pid, // 显示主进程PID
-      cpu: p.cpu.toFixed(1),
-      mem: format(p.mem, { from: 'KB', decimals: 1 }),
+      cpu: +p.cpu.toFixed(1),
+      mem: p.mem,
       user: p.user
     }))
 

@@ -1,20 +1,18 @@
-import { format } from '@/utils'
 import { getNetworkInfo as gni } from '@puniyu/system-info'
 
 interface NetworkStats {
   /** 网络接口名称 */
   name: string
   /** 上传速度 */
-  upload: string
+  upSpeed: number
   /** 下载速度 */
-  download: string
+  downSpeed: number
   /** 总上传字节数 */
-  totalUpload: string
+  totalUp: number
   /** 总下载字节数 */
-  totalDownload: string
+  totalDown: number
 }
 
-type NetworkInfo = ReadonlyArray<NetworkStats>
 
 const Vi = new Map<string, RegExp>([
   // Docker & 容器
@@ -98,7 +96,7 @@ function isVirtualInterface (name: string): boolean {
  * 获取物理网络接口信息
  * 过滤掉 Docker、虚拟化、容器、隧道等虚拟接口
  */
-export function getNetworkInfo (): NetworkInfo {
+export function getNetworkInfo (): NetworkStats[] {
   const ni = gni()
   const list: NetworkStats[] = []
 
@@ -106,10 +104,10 @@ export function getNetworkInfo (): NetworkInfo {
     if (!isVirtualInterface(v.name)) {
       list.push({
         name: v.name,
-        upload: format(v.upload, { from: 'KB' }) + '/s',
-        download: format(v.download, { from: 'KB' }) + '/s',
-        totalUpload: format(v.totalUpload, { from: 'MB' }),
-        totalDownload: format(v.totalDownload, { from: 'MB' }),
+        upSpeed: v.upload * 1000,
+        downSpeed: v.download * 1000,
+        totalUp: v.totalUpload,
+        totalDown: v.totalDownload,
       })
     }
   }

@@ -1,3 +1,5 @@
+const units = ['B', 'KB', 'MB', 'GB', 'TB'] as const
+
 /**
  * 格式化字节数
  * @param bytes 字节数
@@ -7,6 +9,8 @@
 export const formatBytes = (
   bytes: number,
   options: {
+    /** 输入的单位，默认 'B' */
+    from?: typeof units[number]
     /** 保留的小数位数，默认 1 */
     decimals?: number
     /** 是否使用短格式（B→B, KB→K, MB→M, GB→G, TB→T），默认 false */
@@ -15,15 +19,14 @@ export const formatBytes = (
     trimZero?: boolean
   } = {}
 ) => {
-  const { decimals = 1, short = false, trimZero = true } = options
+  const { from = 'B', decimals = 1, short = false, trimZero = true } = options
 
-  if (bytes === 0) return short ? '0 B' : '0 B'  // 或者 '0'
+  if (bytes === 0) return '0 B'
 
-  const units = ['B', 'KB', 'MB', 'GB', 'TB'] as const
   const factor = 1024
 
   let unitIndex = 0
-  let value = bytes
+  let value = bytes * factor ** units.indexOf(from)
   while (value >= factor && unitIndex < units.length - 1) {
     value /= factor
     unitIndex++

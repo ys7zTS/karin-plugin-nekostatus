@@ -10,24 +10,24 @@ export async function getMemoryInfo () {
     /** 物理内存信息 */
     mem: {
       /** 总内存 */
-      total: format(total),
+      total,
       /** 可用 */
-      free: format(free),
+      free,
       /** 已使用 */
-      used: format(used),
+      used,
       /** 使用率 */
       usage: +((used / total) * 100).toFixed(2),
       /** 缓存 */
-      cached: format(mem.cached)
+      cached: mem.cached
     },
     /** 内存交换 */
     swap: {
       /** 总内存 */
-      total: format(mem.swaptotal),
+      total: mem.swaptotal,
       /** 可用 */
-      free: format(mem.swapfree),
+      free: mem.swapfree,
       /** 已使用 */
-      used: format(mem.swapused),
+      used: mem.swapused,
       /** 使用率 */
       usage: +((mem.swapused / mem.swaptotal) * 100).toFixed(2)
     }

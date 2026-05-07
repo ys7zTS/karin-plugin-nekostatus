@@ -24,7 +24,7 @@ export async function getCPUInfo () {
     /** L3缓存信息 */
     l3cache: cpu.cache?.l3 ? format(cpu.cache.l3) : 'N/A',
     /** CPU总使用率 */
-    totalLoad: cpuLoad.currentLoad.toFixed(0) || 0,
+    totalLoad: +cpuLoad.currentLoad.toFixed(0) || 0,
     /** 每个核心使用率 */
     cpus: cpuLoad.cpus
       ? cpuLoad.cpus.map((core, index) => ({ core: index + 1, usage: +core.load.toFixed(2) }))

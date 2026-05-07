@@ -3,3 +3,4 @@
 lib/
 development.env
 src/apps/test*
+plugins/

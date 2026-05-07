@@ -2,6 +2,7 @@ import { getBotInfo, getCPUInfo, getMemoryInfo, getNetworkInfo, getProcessInfo, 
 import { Cfg, render } from '@/utils'
 import { StatusData } from '@ys7zts/neko-template'
 import karin, { config, getPlugins, logger } from 'node-karin'
+import os from 'node:os'
 import { formatUptime } from '@/utils'
 
 const escapeRegex = (str: string) => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
@@ -28,7 +29,7 @@ export const status = karin.command(getRegex(), async (ctx) => {
   const [cpu, mem, sysInfo] = await Promise.all([getCPUInfo(), getMemoryInfo(), getSystemInfo()])
 
   const [app, allPlugins, npm, git] = await Promise.all([
-    getPlugins('app', true),
+    getPlugins('app', false),
     getPlugins('all', false),
     getPlugins('npm', false),
     getPlugins('git', false)
@@ -51,33 +52,69 @@ export const status = karin.command(getRegex(), async (ctx) => {
       uptime: formatUptime(process.uptime()),
       version: config.pkg().version,
       plugins: {
-        total: allPlugins.length,
+        total: (allPlugins.includes('app:karin-plugin-example') ? allPlugins.length - 1 : allPlugins.length) + app.length,
+        npm: npm.length,
+        git: git.length,
+        app: app.length
       }
+    },
+    cpu: {
+      model: cpu.manufacturer + cpu.brand,
+      cores: cpu.cores,
+      frequency: cpu.maxSpeed,
+      usage: cpu.totalLoad,
+      threads: cpu.threads
+    },
+    mem: {
+      ram: {
+        used: mem.mem.used,
+        total: mem.mem.total,
+        usage: mem.mem.usage,
+        free: mem.mem.free,
+      },
+      swap: mem.swap
     },
     hostInfo: {
       hostname: sysInfo.hostname,
       system: sysInfo.system,
       arch: sysInfo.arch,
       kernel: sysInfo.kernel,
-      uptime: '0',
-      timezone: ''
+      uptime: formatUptime(os.uptime()),
+      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
     },
     networks: [],
+    disks: [],
+    proc: {
+      procs: [],
+      all: 0,
+      sort: 'mem',
+      running: 0,
+      blocked: 0,
+      sleeping: 0,
+      unknown: 0
+    },
     footer: ''
   }
 
   if (isAll) {
-
-
     const [disk, network, process] = await Promise.all([
       getStorageInfo(),
       Promise.resolve(getNetworkInfo()),
       getProcessInfo(10, Cfg.config.processSort)
     ])
-
+    raw.disks = disk
+    raw.networks = network
+    raw.proc = {
+      procs: process.list,
+      all: process.all,
+      sort: Cfg.config.processSort,
+      running: process.running,
+      blocked: process.blocked,
+      sleeping: process.sleeping,
+      unknown: process.unknown
+    }
   }
 
   const img = await render(raw)
   ctx.reply(img)
-  logger.info(status.reg)
 }, { name: '状态', priority: -Infinity })

@@ -1,4 +1,3 @@
-import { format } from '@/utils'
 import _ from 'node-karin/lodash'
 import si from 'systeminformation'
 export async function getStorageInfo () {
@@ -12,13 +11,13 @@ export async function getStorageInfo () {
       /** 磁盘类型 */
       type: disk.type,
       /** 总空间 */
-      size: format(disk.size),
+      total: disk.size,
       /** 已使用 */
-      used: format(disk.used),
+      used: disk.used,
       /** 剩余 */
-      free: format(disk.available),
+      free: disk.available,
       /** 使用百分比 */
-      use: disk.use.toFixed(2),
+      usage: +disk.use.toFixed(2),
     }
   })
 }

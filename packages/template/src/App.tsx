@@ -1,5 +1,6 @@
 import { BotSection } from '@/components/bot-card'
 import { CpuSection } from '@/components/cpu-section'
+import { DiskSection } from '@/components/disk-section'
 import { FrameworkSection } from '@/components/framework-section'
 import { MemorySection } from '@/components/memory-section'
 import { NetworkSection } from '@/components/network-section'
@@ -43,6 +44,7 @@ export default function App (data: StatusData) {
           <FrameworkSection {...data.framework} />
           <CpuSection {...data.cpu} />
           <MemorySection {...data.mem} />
+          {data.disks.length > 0 && <DiskSection disks={data.disks} />}
           {data.networks.length > 0 && <NetworkSection networks={data.networks} />}
           {Object.keys(data.proc).length > 0 && data.proc.procs.length > 0 && <ProcessSection {...data.proc} />}
           <ServerSection {...data.hostInfo} />

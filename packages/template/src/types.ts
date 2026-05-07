@@ -74,6 +74,22 @@ export interface MemoryInfo {
   swap: MemInfo
 }
 
+/** 硬盘信息 */
+export interface DiskInfo {
+  /** 盘符/挂载点 */
+  mount: string
+  /** 文件系统类型 */
+  type: string
+  /** 总空间 */
+  total: number
+  /** 已使用 */
+  used: number
+  /** 剩余空间 */
+  free: number
+  /** 使用率 */
+  usage: number
+}
+
 /** 网络信息 */
 export interface NetfaceInfo {
   /** 接口名称 */
@@ -141,6 +157,8 @@ export interface StatusData {
   cpu: CPUInfo
   /** 内存信息 */
   mem: MemoryInfo
+  /** 硬盘信息 */
+  disks: DiskInfo[]
   /** 网络信息 */
   networks: NetfaceInfo[]
   /** 进程信息 */

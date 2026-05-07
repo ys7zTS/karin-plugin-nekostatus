@@ -1,4 +1,4 @@
-import styles from '@/styles/style.css?raw'
+import styles from '@/styles/style.css?inline'
 import { StatusData } from './types'
 import { renderToString } from 'react-dom/server'
 import App from './App'

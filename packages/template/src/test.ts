@@ -138,6 +138,30 @@ export const TestData: StatusData = {
       { name: "docker-proxy", pid: 1450, cpu: 0.8, mem: 0.6 },
     ]
   },
+  disks: [{
+    mount: 'C:',
+    type: "DDS",
+    total: 50000,
+    used: 30000,
+    free: 20000,
+    usage: 60
+  },
+  {
+    mount: 'C:',
+    type: "DDS",
+    total: 50000,
+    used: 30000,
+    free: 20000,
+    usage: 60
+  },
+  {
+    mount: 'C:',
+    type: "DDS",
+    total: 50000,
+    used: 30000,
+    free: 20000,
+    usage: 60
+  }],
   hostInfo: {
     hostname: "neko-server-01",
     system: "Ubuntu 24.04 LTS",
