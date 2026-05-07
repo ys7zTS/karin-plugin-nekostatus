@@ -3,6 +3,7 @@ import fs from 'node:fs/promises'
 import { segment, karin } from 'node-karin'
 import { dir } from '@/utils/dir'
 import { StatusData, render as renderHtml } from '@ys7zts/neko-template'
+import { Cfg } from '@/utils/config'
 
 /**
  * 渲染
@@ -11,7 +12,7 @@ import { StatusData, render as renderHtml } from '@ys7zts/neko-template'
 export const render = async (data: StatusData) => {
   const filePath = path.join(dir.TempDir, `status-${Date.now()}.html`)
   try {
-    const html = renderHtml(data)
+    const html = renderHtml(data, Cfg.config.styles)
     await fs.writeFile(filePath, html, 'utf8')
     const img = await karin.render({
       name: 'status',

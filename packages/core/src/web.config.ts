@@ -83,6 +83,24 @@ export default defineConfig({
           description: '进程信息按CPU使用率排序'
         })
       ]
+    }),
+    components.radio.group('styles', {
+      label: '样式模式',
+      size: 'md',
+      color: 'warning',
+      defaultValue: Cfg.config.styles,
+      radio: [
+        components.radio.create('Styles_pink', {
+          label: '樱花粉风格',
+          value: 'pink',
+          description: '使用樱花粉风格样式'
+        }),
+        components.radio.create('Styles_paper', {
+          label: '纸张风格',
+          value: 'paper',
+          description: '使用纸张风格样式'
+        })
+      ]
     })
   ],
   save: (config: ConfigType) => {

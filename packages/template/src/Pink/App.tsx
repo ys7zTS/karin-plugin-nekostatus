@@ -1,13 +1,13 @@
-import { BotSection } from '@/components/bot-card'
-import { CpuSection } from '@/components/cpu-section'
-import { DiskSection } from '@/components/disk-section'
-import { FrameworkSection } from '@/components/framework-section'
-import { MemorySection } from '@/components/memory-section'
-import { NetworkSection } from '@/components/network-section'
-import { PawIcon } from '@/components/neko-icons'
-import { ProcessSection } from '@/components/process-section'
-import { ServerSection } from '@/components/server-section'
-import { StatusData } from './types'
+import { BotSection } from '@/Pink/components/bot-card'
+import { CpuSection } from '@/Pink/components/cpu-section'
+import { DiskSection } from '@/Pink/components/disk-section'
+import { FrameworkSection } from '@/Pink/components/framework-section'
+import { MemorySection } from '@/Pink/components/memory-section'
+import { NetworkSection } from '@/Pink/components/network-section'
+import { PawIcon } from '@/Pink/components/neko-icons'
+import { ProcessSection } from '@/Pink/components/process-section'
+import { ServerSection } from '@/Pink/components/server-section'
+import { StatusData } from '../types'
 
 export default function App (data: StatusData) {
   return (

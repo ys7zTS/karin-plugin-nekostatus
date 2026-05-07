@@ -1,10 +1,15 @@
-import styles from '@/styles/style.css?inline'
+import pinkStyles from '@/Pink/styles/style.css?inline'
+import paperStyles from './Paper/styles/style.css?inline'
 import { StatusData } from './types'
 import { renderToString } from 'react-dom/server'
-import App from './App'
+import PinkApp from './Pink/App'
+import PaperApp from './Paper/App'
 
-export const render = (data: StatusData) => {
-  const res = renderToString(<App {...data} />)
+export const render = (data: StatusData, template: 'pink' | 'paper' = 'pink') => {
+  const styles = template === 'paper' ? paperStyles : pinkStyles
+  const res = template === 'paper'
+    ? renderToString(<PaperApp {...data} />)
+    : renderToString(<PinkApp {...data} />)
   const html = `<!DOCTYPE html>
 <html lang="zh-CN">
 

@@ -16,7 +16,8 @@ export interface ConfigType {
   prefix: string[]
   /** 进程排序方式：mem 或 cpu */
   processSort: 'mem' | 'cpu'
-  styles: 'pink'
+  /** 模板样式：pink 或 paper */
+  styles: 'pink' | 'paper'
 }
 class Config {
   defConfig: ConfigType = {
