@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.4.10](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/core-v1.4.9...core-v1.4.10) (2026-05-07)
+
+
+### 🐛 错误修复
+
+* **template:** 新增另一套状态样式 ([f489632](https://github.com/ys7zTS/karin-plugin-nekostatus/commit/f489632fe29ebb2b07b88483b62829d94ed35331))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ys7zts/neko-template bumped to 1.4.10
+
 ## [1.4.9](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/core-v1.4.8...core-v1.4.9) (2026-05-07)
 
 
