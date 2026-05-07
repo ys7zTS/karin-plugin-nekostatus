@@ -1,7 +1,7 @@
 {
   "name": "@ys7zts/neko-template",
   "private": true,
-  "version": "1.4.7",
+  "version": "1.4.8",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
