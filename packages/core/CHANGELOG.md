@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.4.9](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/core-v1.4.8...core-v1.4.9) (2026-05-07)
+
+
+### 🐛 错误修复
+
+* **core:** 修复进程信息数据统计错误问题 ([9ef72ae](https://github.com/ys7zTS/karin-plugin-nekostatus/commit/9ef72aea344c48a0e330d5874bfdc0c593b2e074))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ys7zts/neko-template bumped to 1.4.9
+
 ## [1.4.8](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/core-v1.4.7...core-v1.4.8) (2026-05-07)
 
 
