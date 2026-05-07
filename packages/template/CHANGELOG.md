@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.7](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/template-v1.4.6...template-v1.4.7) (2026-05-07)
+
+
+### 🐛 错误修复
+
+* 优化前端逻辑 ([feced46](https://github.com/ys7zTS/karin-plugin-nekostatus/commit/feced4682d83c05fb0c2052a908a9115f07fdf70))
+
 ## [1.4.6](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/template-v1.4.5...template-v1.4.6) (2026-05-07)
 
 
