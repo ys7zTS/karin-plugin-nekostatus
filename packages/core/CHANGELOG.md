@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.4.7](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/core-v1.4.6...core-v1.4.7) (2026-05-07)
+
+
+### 🔧 其他更新
+
+* **core:** Synchronize plugin versions
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ys7zts/neko-template bumped to 1.4.7
+
 ## [1.4.6](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/core-v1.4.5...core-v1.4.6) (2026-05-07)
 
 
