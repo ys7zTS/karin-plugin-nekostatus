@@ -24,23 +24,23 @@ export function NetworkSection ({ networks }: { networks: NetfaceInfo[] }) {
               <Cell
                 icon={<ArrowUp className="h-3.5 w-3.5 text-primary" />}
                 label="上行"
-                value={formatBytes(n.upSpeed) + "/s"}
+                value={formatBytes(n.upSpeed, { from: 'KB' }) + "/s"}
               />
               <Cell
                 icon={<ArrowDown className="h-3.5 w-3.5 text-primary" />}
                 label="下行"
-                value={formatBytes(n.downSpeed) + "/s"}
+                value={formatBytes(n.downSpeed, { from: 'KB' }) + "/s"}
               />
               <Cell
                 icon={<ArrowUp className="h-3.5 w-3.5 text-muted-foreground" />}
                 label="总上传"
-                value={formatBytes(n.totalUp)}
+                value={formatBytes(n.totalUp, { from: 'MB' })}
                 muted
               />
               <Cell
                 icon={<ArrowDown className="h-3.5 w-3.5 text-muted-foreground" />}
                 label="总下载"
-                value={formatBytes(n.totalDown)}
+                value={formatBytes(n.totalDown, { from: 'MB' })}
                 muted
               />
             </div>

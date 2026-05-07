@@ -25,10 +25,10 @@ export function ProcessSection (proc: ProcInfo) {
                 PID
               </th>
               <th className="px-3 py-2 text-right text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
-                CPU
+                CPU {proc.sort === 'cpu' && '↓'}
               </th>
               <th className="px-3 py-2 text-right text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
-                MEM
+                MEM {proc.sort === 'mem' && '↓'}
               </th>
             </tr>
           </thead>

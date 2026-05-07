@@ -119,7 +119,7 @@ export const TestData: StatusData = {
     }
   ],
   proc: {
-    sort: "cpu",
+    sort: 'mem',
     all: 256,
     running: 12,
     blocked: 5,

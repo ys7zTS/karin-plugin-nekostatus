@@ -27,7 +27,7 @@ export async function getProcessInfo (limit = 10, sort: ProcessSortType = 'cpu')
         for (const item of (Array.isArray(procArray) ? procArray : [procArray])) {
           if (item.IDProcess && item.WorkingSetPrivate) {
             // WorkingSetPrivate 单位是字节，转换为 KB
-            privateWsMap.set(item.IDProcess, Math.floor(item.WorkingSetPrivate / 1024))
+            privateWsMap.set(item.IDProcess, item.WorkingSetPrivate)
           }
         }
 

@@ -104,8 +104,8 @@ export function getNetworkInfo (): NetworkStats[] {
     if (!isVirtualInterface(v.name)) {
       list.push({
         name: v.name,
-        upSpeed: v.upload * 1000,
-        downSpeed: v.download * 1000,
+        upSpeed: v.upload,
+        downSpeed: v.download,
         totalUp: v.totalUpload,
         totalDown: v.totalDownload,
       })
