@@ -21,8 +21,9 @@ export const render = async (data: StatusData) => {
         waitUntil: 'networkidle0',
       },
       setViewport: {
-        width: 2000,
-        deviceScaleFactor: 3
+        width: 1920,
+        height: 1080,
+        deviceScaleFactor: 4
       }
     })
     return segment.image(`${img.includes('base64://') ? img : `base64://${img}`}`)

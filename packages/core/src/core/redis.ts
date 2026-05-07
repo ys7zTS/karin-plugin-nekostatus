@@ -15,7 +15,7 @@ export const getReceiveCount = async (Id: string) => {
   const d1 = await redis.get(key)
   return +(d1 || 0)
 }
-// TODO: 无法统计Bot消息发送量
+// TODO: 框架未提供统计Bot消息发送量
 /**
  * 获取指定Bot发送消息次数
  * @param Id BotId
@@ -42,7 +42,7 @@ export const init = async () => {
       next()
     }
   })
-  // TODO: 该函数无法获取Bot本身ID用来统计消息量
+  // TODO: 该消息hooks无法获取Bot本身ID以用来统计消息量
   // hooks.sendMsg.message(async (contact, _, __, next) => {
   //   try {
   //     const d1 = await redis.get(`nekostatus:send:${contact.peer}`)
