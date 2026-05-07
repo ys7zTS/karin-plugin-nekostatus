@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.4.6](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/template-v1.4.5...template-v1.4.6) (2026-05-07)
+
+
+### 🐛 错误修复
+
+* **core:** 优化前端 ([747caf7](https://github.com/ys7zTS/karin-plugin-nekostatus/commit/747caf78081d4bec964dc2373fde518cd17b776b))
+* **core:** 重写后端接口，适配前端 ([e35edb5](https://github.com/ys7zTS/karin-plugin-nekostatus/commit/e35edb599c2f8a1c0fcaa9db0ab05688c199623e))
+* **template:** 重写ui样式 ([baeb4e3](https://github.com/ys7zTS/karin-plugin-nekostatus/commit/baeb4e3e30224616e11cda7a9827d7fa5efaedeb))
+
 ## [1.4.5](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/template-v1.4.4...template-v1.4.5) (2026-05-05)
 
 
