@@ -51,7 +51,7 @@ export function ProcessSection (proc: ProcInfo) {
                   {p.cpu.toFixed(1)}%
                 </td>
                 <td className="px-3 py-2 text-right font-mono text-xs font-bold tabular-nums text-foreground">
-                  {formatBytes(p.mem)}
+                  {formatBytes(p.mem, { from: 'KB' })}
                 </td>
               </tr>
             ))}
