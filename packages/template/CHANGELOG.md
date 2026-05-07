@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.8](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/template-v1.4.7...template-v1.4.8) (2026-05-07)
+
+
+### 🔧 其他更新
+
+* **template:** Synchronize plugin versions
+
 ## [1.4.7](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/template-v1.4.6...template-v1.4.7) (2026-05-07)
 
 

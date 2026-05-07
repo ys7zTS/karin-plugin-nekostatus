@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.4.8](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/core-v1.4.7...core-v1.4.8) (2026-05-07)
+
+
+### 🐛 错误修复
+
+* **core:** 修复插件加载循环调用 ([70ecf7a](https://github.com/ys7zTS/karin-plugin-nekostatus/commit/70ecf7a71e8d258e9950deee4546da54e0586039))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ys7zts/neko-template bumped to 1.4.8
+
 ## [1.4.7](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/core-v1.4.6...core-v1.4.7) (2026-05-07)
 
 
