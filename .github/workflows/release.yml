@@ -55,6 +55,12 @@ jobs:
     if: ${{ needs.release-please.outputs.core-released == 'true' }}
     runs-on: ubuntu-latest
     steps:
+      - name: 导入构建产物
+        uses: actions/download-artifact@v4
+        with:
+          name: core-build
+          path: .
+
       - uses: actions/setup-node@v4
         with:
           node-version: 24
