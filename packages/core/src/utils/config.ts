@@ -1,5 +1,5 @@
-import { updateRegex } from '@/apps/status'
 import { dir } from '@/utils/dir'
+import chokidar from 'chokidar'
 import {
   logger,
   requireFileSync,
@@ -44,16 +44,19 @@ class Config {
    * 监听配置文件变化，带防抖，变化时清空缓存
    */
   watchConfig (): void {
-    let timer: NodeJS.Timeout | null = null
     try {
-      fs.watch(this.CfgPath, (eventType) => {
-        if (eventType !== 'change') return
-        if (timer) clearTimeout(timer)
-        timer = setTimeout(() => {
-          this.cache = null
-          logger.info('[猫猫状态] 检测到配置文件变化，已刷新缓存')
-          updateRegex()
-        }, 300)
+      const watcher = chokidar.watch(this.CfgPath, {
+        persistent: true,
+        ignoreInitial: true,
+        awaitWriteFinish: {
+          stabilityThreshold: 300
+        }
+      })
+      watcher.on('change', async () => {
+        this.cache = null
+        logger.info('[猫猫状态] 检测到配置文件变化，已刷新缓存')
+        const { updateRegex } = await import('@/apps/status')
+        updateRegex()
       })
     } catch (err) {
       logger.error('[猫猫状态] 启动配置文件监听失败', err)

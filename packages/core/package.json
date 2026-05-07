@@ -23,9 +23,9 @@
     "@karinjs/plugin-puppeteer": "2.3.1",
     "@types/express": "5.0.6",
     "@types/react": "19.2.14",
+    "@ys7zts/neko-template": "workspace:*",
     "cross-env": "10.1.0",
-    "node-karin": "1.15.5",
-    "@ys7zts/neko-template": "workspace:*"
+    "node-karin": "1.15.5"
   },
   "karin": {
     "main": "src/index.ts",
@@ -56,6 +56,7 @@
   ],
   "dependencies": {
     "@puniyu/system-info": "^1.5.5",
+    "chokidar": "^5.0.0",
     "systeminformation": "^5.31.5"
   }
 }
