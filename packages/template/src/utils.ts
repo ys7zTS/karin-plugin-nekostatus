@@ -21,7 +21,7 @@ export const formatBytes = (
 ) => {
   const { from = 'B', decimals = 1, short = false, trimZero = true } = options
 
-  if (bytes === 0) return '0 B'
+  if (!bytes) return '0 B'
 
   const factor = 1024
 
