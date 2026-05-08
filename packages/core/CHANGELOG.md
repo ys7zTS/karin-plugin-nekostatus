@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.4.11](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/core-v1.4.10...core-v1.4.11) (2026-05-08)
+
+
+### 🐛 错误修复
+
+* **template:** 修复Pink样式组件模糊的问题 ([8685390](https://github.com/ys7zTS/karin-plugin-nekostatus/commit/86853902215cab90546752476e7ff3e49c5d695c))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ys7zts/neko-template bumped to 1.4.11
+
 ## [1.4.10](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/core-v1.4.9...core-v1.4.10) (2026-05-07)
 
 
