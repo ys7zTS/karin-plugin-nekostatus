@@ -12,7 +12,7 @@ import { StatusData } from '../types'
 export default function App (data: StatusData) {
   return (
     <main className="min-h-svh bg-background">
-      <div className="mx-auto max-w-3xl px-4 py-8 sm:py-10">
+      <div id="container" style={{ width: '800px', padding: '20px', boxSizing: 'border-box', transform: `scale(${1440 / 800})`, transformOrigin: 'top left' }}>
         {/* Header */}
         <header className="mb-6 flex items-center justify-between rounded-2xl border border-border bg-card px-5 py-4 shadow-[0_2px_0_0_rgba(244,168,184,0.15)]">
           <div className="flex items-center gap-3">
