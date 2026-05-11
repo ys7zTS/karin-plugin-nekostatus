@@ -1,5 +1,5 @@
 import { getBotInfo, getCPUInfo, getMemoryInfo, getNetworkInfo, getProcessInfo, getStorageInfo, getSystemInfo } from '@/modules'
-import { Cfg, render } from '@/utils'
+import { Cfg, dir, render } from '@/utils'
 import { StatusData } from '@ys7zts/neko-template'
 import karin, { config, getPlugins, logger } from 'node-karin'
 import os from 'node:os'
@@ -93,7 +93,7 @@ export const status = karin.command(getRegex(), async (ctx) => {
       sleeping: 0,
       unknown: 0
     },
-    footer: ''
+    footer: `${dir.name} v${dir.version} - Copyright © 2025 ${dir.pkg.author} | Powered by Karin v${config.pkg().version}`
   }
 
   if (isAll) {
