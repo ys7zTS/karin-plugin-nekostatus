@@ -27,9 +27,9 @@ async function BotInfo (Id: string) {
       /** 头像 */
       avatar: bot?.account.avatar || 'https://p.qlogo.cn/gh/967068507/967068507/0',
       /** 好友数量 */
-      friends: (await bot?.getFriendList())?.length || 0,
+      friends: await getSafeLength(async () => bot?.getFriendList()),
       /** 群聊数量 */
-      groups: (await bot?.getGroupList())?.length || 0,
+      groups: await getSafeLength(async () => bot?.getGroupList()),
       /** 接收消息数量 */
       receive: await getReceiveCount(Id),
       /** 发送消息数量 */
@@ -44,5 +44,15 @@ async function BotInfo (Id: string) {
       /** 版本 */
       version: bot?.adapter.version || '0.0.0'
     }
+  }
+}
+
+async function getSafeLength (func: () => Promise<{ length?: number } | null | undefined>) {
+  if (!func) return 0
+  try {
+    const res = await func()
+    return res?.length || 0
+  } catch (e) {
+    return 0
   }
 }
