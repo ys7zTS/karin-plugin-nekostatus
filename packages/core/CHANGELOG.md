@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.4.13](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/core-v1.4.12...core-v1.4.13) (2026-05-27)
+
+
+### 🐛 错误修复
+
+* 使用getSafeLength函数安全获取好友和群聊数量 ([a99e171](https://github.com/ys7zTS/karin-plugin-nekostatus/commit/a99e171e82017ba3bd8441792fa806ac06f9fb63))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ys7zts/neko-template bumped to 1.4.13
+
 ## [1.4.12](https://github.com/ys7zTS/karin-plugin-nekostatus/compare/core-v1.4.11...core-v1.4.12) (2026-05-11)
 
 
